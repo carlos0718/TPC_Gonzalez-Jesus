@@ -1,0 +1,8 @@
+
+Datos para armar modelo de dominio:
+
+Clase Persona: Nombre, Apellido,FechaNac,DNI
+
+Clase AreasEmpresa: Management IT,Databases Administrator,Mesa de Ayuda, Soporte Técnico, Networking, Development, RR.HH, Finanzas, Compras,
+
+Clase PersonasPorArea: ::clsPersona, ::clsAreasEmpresa
