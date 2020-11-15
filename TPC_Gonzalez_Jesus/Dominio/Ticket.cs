@@ -6,12 +6,12 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Ticket
+    public class Ticket
     {
 		/*
 		ticketuid int identity(1,1) primary key,    /* identificador unico para todos los tickets 
 		ticketid int not null,      /* identificador para cada ticket de su propia clase 
-		clase varchar(10) not null,
+		clase varchar(20) not null,
 		fecha_creacion date default CURRENT_TIMESTAMP,
 		fecha_fin date,
 		descripcion varchar(300) not null,
@@ -20,5 +20,16 @@ namespace Dominio
 		urgencia int not null default 5,
 		clasificacionid int not null foreign key REFERENCES CLASIFICACION(clasificacionid),
 			*/
+		//uint ticketuid;
+		uint ticketid;
+		string clase;
+		DateTime fecha_creacion;
+		DateTime fecha_fin;
+		string descripcion;
+		string estado;
+		string detalle;
+		byte urgencia;
+		byte clasificacionid;
+
     }
 }

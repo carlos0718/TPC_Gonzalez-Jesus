@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Areas
+    public class Areas
     {
         byte areasid;
         string nombre;

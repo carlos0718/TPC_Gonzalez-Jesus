@@ -74,3 +74,7 @@ C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\obj\
 C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\obj\Debug\SistemaDeTickets.csproj.CopyComplete
 C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\obj\Debug\SistemaDeTickets.dll
 C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\obj\Debug\SistemaDeTickets.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\bin\Negocio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\bin\Dominio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\bin\Negocio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez_Jesus\SistemaDeTickets\bin\Dominio.pdb

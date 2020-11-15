@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace Negocio
 {
-    class ConexionBase
+    public class ConexionBase
     {
         string rutaBaseDatos ;
         string rutaConexionLocal;
@@ -17,8 +17,8 @@ namespace Negocio
         SqlDataReader lector;
 
 
-       
-        ConexionBase()
+
+        public ConexionBase()
         {
             rutaConexionLocal = "MATIASLENOVO\\SQLEXPRESS";     // Ruta local unificada para conexion al SQL Server
             nombreBase = "TICKET_IT";
@@ -30,7 +30,7 @@ namespace Negocio
             comando.Connection = conexion;
         }
 
-        void Select(string sentenciaSql)
+        public void Select(string sentenciaSql)
         {
             comando.CommandText = sentenciaSql;
 
@@ -39,7 +39,7 @@ namespace Negocio
 
             //while (lector.Read())
         }
-        int InsertUpdateDel(string sentenciaSql)
+        public int InsertUpdateDel(string sentenciaSql)
         {
             comando.CommandText = sentenciaSql;
                 //"INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio,imagenurl) " + "VALUES('" + nuevo.codArticulo + "','" +
@@ -49,7 +49,7 @@ namespace Negocio
         }
 
 
-        void Cerrar()
+        public void Cerrar()
         {
             lector.Close();
             conexion.Close();

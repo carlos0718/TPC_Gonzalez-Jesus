@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class InfoContacto
+    public class InfoContacto
     {
         ushort idinfocontacto;
         ushort idpersona;

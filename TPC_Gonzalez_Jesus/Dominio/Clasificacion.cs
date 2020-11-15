@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Clasificacion
+    public class Clasificacion
     {
         ushort clasificacionid;
         string clasificacion;

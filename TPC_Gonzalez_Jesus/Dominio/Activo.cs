@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Dominio
 {
-    class Activo
+    public class Activo
     {
         ushort activoid;
         string nombre;
