@@ -24,8 +24,8 @@ namespace Negocio
         int CrearIncidente()
         {
             ConexionBase conexionBase = new ConexionBase();
-            sentenciaSql=
-            InsertUpdateDel
+            sentenciaSql = "select * from ticket";
+            conexionBase.Select(sentenciaSql);
 
 
             return -1;
