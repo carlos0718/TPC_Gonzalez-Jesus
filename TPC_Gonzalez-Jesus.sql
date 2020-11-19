@@ -52,7 +52,7 @@ create table AREAS(
 	nombre varchar(50) UNIQUE
 )
 INSERT into AREAS (nombre) values ('TECNICO'),('ADMINISTRATIVO'),('RRHH'),('FINANZAS'),('GERENCIA'),('CLIENTE'),('MANTENIMIENTO'),('VARIOS')
-
+SELECT * FROM AREAS ORDER by areasID ASC 
 
 	/* ============   ============   ============ */
 -- Grupo de personas para asignar trabajo en tratamiento de tickets
@@ -172,6 +172,7 @@ insert into persona (apellido,nombre,fecha_nacimiento,DNI) values
 
 
 INSERT into ESTADOS (estado,dominio) values ('NUEVO','INCIDENTE'),('EN COLA','INCIDENTE'),('EN PROGRESO','INCIDENTE'),('RESUELTO','INCIDENTE'),('CERRADO','INCIDENTE'),('CANCELADO','INCIDENTE')
+INSERT into ESTADOS (estado,dominio) values ('NUEVO','SOLICITUD'),('EN COLA','SOLICITUD'),('EN PROGRESO','SOLICITUD'),('RESUELTO','SOLICITUD'),('CERRADO','SOLICITUD'),('CANCELADO','SOLICITUD')
 
 insert into TICKET (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor) 
 VALUES ('INCIDENTE','Pantallazo azul','El cliente reporta que tiene repetidos pantallazos azul indicando memoria insuficiente','NUEVO',3,1,222)
@@ -226,6 +227,32 @@ begin
 	end
 
 end
-
-
 select * from ticket
+	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
+	/* ============																											 ============ */
+	/* ============									 		 VISTAS	             										     ============ */
+	/* ============																											 ============ */
+	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
+
+-- 1.- TRAE LA VISTA DE CANTIDAD DE CLASE=INCIDENTES GENERADOS
+ALTER VIEW CantidadTks AS
+SELECT COUNT(*)[Cantidad de Inc.] FROM TICKET T  WHERE T.clase LIKE 'INCIDENTE'
+
+SELECT * FROM CantidadTks
+--2.- TRAE LA VISTA DE TODOS LOS TKT CON ESTADO = NUEVO
+CREATE VIEW VIEW_ESTADO AS
+SELECT T.clase,T.descripcion,T.detalle,T.estado,T.urgencia,T.clasificacionid,T.creadopor, T.propietario,T.grupopropietario FROM TICKET T
+WHERE T.estado LIKE 'NUEVO'
+
+SELECT * FROM VIEW_ESTADO
+--3.- TRAE LA VISTA DE LA CANTIDAD DE CLASE=SOLICITUDES GENERADOS
+CREATE VIEW CantidadSoli AS
+SELECT COUNT(*) [Cantidad de Solicitudes] FROM TICKET T WHERE T.clase LIKE 'SOLICITUD'
+
+SELECT * FROM CantidadSoli
+
+
+-- ===================================================================	
+
+
+
