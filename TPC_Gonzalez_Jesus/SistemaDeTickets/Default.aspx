@@ -2,44 +2,50 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
-    <div class="jumbotron">
-        <h1>ASP.NET</h1>
-        <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS, and JavaScript.</p>
-        <p><a href="http://www.asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-    
-    </div>
-    
-        <asp:DropDownList ID="TIpoTicket" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-    </asp:DropDownList>
-    <div class="row">
-        <div class="col-md-4">
-            <h2>Getting started</h2>
-            <p>
-                ASP.NET Web Forms lets you build dynamic websites using a familiar drag-and-drop, event-driven model.
-            A design surface and hundreds of controls and components let you rapidly build sophisticated, powerful UI-driven sites with data access.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301948">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Get more libraries</h2>
-            <p>
-                NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301949">Learn more &raquo;</a>
-            </p>
-        </div>
-        <div class="col-md-4">
-            <h2>Web Hosting</h2>
-            <p>
-                You can easily find a web hosting company that offers the right mix of features and price for your applications.
-            </p>
-            <p>
-                <a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301950">Learn more &raquo;</a>
-            </p>
-        </div>
-    </div>
+   <form id="form" runat="server">
+        <section>
+            <div class="container">
+                <div class="row">   
+                    <div class="col-sm-6">            
+                     <ul style="list-style-type:none;">
+                           <li> 
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="LblTktID" runat="server" Text="Ticket N° :"></asp:Label>
+                                <asp:TextBox ID="TxtID" runat="server" Width="152px"></asp:TextBox>
+                           </li>
+                            <li>
+                                <asp:Label ID="LblAffectedUser" runat="server" Text="Affected User :"></asp:Label>
+                                <asp:TextBox ID="TxtAffectedUser" runat="server"></asp:TextBox>
+                            </li>
+                            <li>
+                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="LblCreator" runat="server" Text="Creator :"></asp:Label>
+                                <asp:TextBox ID="TxtCreator" runat="server"></asp:TextBox>
+                            </li>
+                    </ul>
+                    </div>
+                    <div class="col-sm-6">     
+                        <ul style="list-style-type:none;">
+                            <li>
+                                <%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>
+                                <asp:Label ID="LblStatus" runat="server" Text="Status :"></asp:Label>
+                                <asp:DropDownList ID="TxtStatus" runat="server" Width="150px"></asp:DropDownList>
+                            </li>
+                            <li>
+                                <%-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp--%>
+                                <asp:Label ID="LblAssigned" runat="server" Text="Assigned :"></asp:Label>
+                                <asp:DropDownList ID="DdlAssigned" runat="server" Width="150px"></asp:DropDownList>
+                            </li>
+                            <li>
+                                <asp:Label ID="LblAssignedGroup" runat="server" Text="Assigned Group :"></asp:Label>
+                                <asp:DropDownList ID="DslAssignedGroup" runat="server" Width="150px"></asp:DropDownList>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+             </div>
+        </section>
+    </form>
+       <%-- <asp:DropDownList ID="TIpoTicket" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
+    </asp:DropDownList>--%>
+   
 
 </asp:Content>

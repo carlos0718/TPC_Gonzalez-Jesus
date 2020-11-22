@@ -8,12 +8,12 @@
     <title></title>
 </head>
 <body>
-    <form id="form1" runat="server">
-        <div>
+   <%-- <form id="form1" runat="server">
+       <div>
         </div>
         <asp:DropDownList ID="ddlTipoTicket" runat="server" >
         </asp:DropDownList>
         <asp:Label ID="lblMain" runat="server" Text="Label"></asp:Label>
-    </form>
+    </form>--%>
 </body>
 </html>

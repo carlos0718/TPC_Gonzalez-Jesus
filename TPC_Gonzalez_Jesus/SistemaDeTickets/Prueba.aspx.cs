@@ -16,8 +16,8 @@ namespace SistemaDeTickets
             opcionesDeTicket = new List<string>();
             opcionesDeTicket.Add("INCIDENTE");
             opcionesDeTicket.Add("SOLICITUD");
-            ddlTipoTicket.DataSource = opcionesDeTicket;
-            ddlTipoTicket.DataBind();
+            //ddlTipoTicket.DataSource = opcionesDeTicket;
+            //ddlTipoTicket.DataBind();
         }
 
 

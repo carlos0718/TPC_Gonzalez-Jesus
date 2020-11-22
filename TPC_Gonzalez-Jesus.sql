@@ -236,18 +236,18 @@ select * from ticket
 
 -- 1.- TRAE LA VISTA DE CANTIDAD DE CLASE=INCIDENTES GENERADOS
 ALTER VIEW CantidadTks AS
-SELECT COUNT(*)[Cantidad de Inc.] FROM TICKET T  WHERE T.clase LIKE 'INCIDENTE'
+SELECT COUNT(*)[Cantidad de Inc.] FROM TICKET T  WHERE T.clase = 'INCIDENTE'
 
 SELECT * FROM CantidadTks
 --2.- TRAE LA VISTA DE TODOS LOS TKT CON ESTADO = NUEVO
 CREATE VIEW VIEW_ESTADO AS
-SELECT T.clase,T.descripcion,T.detalle,T.estado,T.urgencia,T.clasificacionid,T.creadopor, T.propietario,T.grupopropietario FROM TICKET T
-WHERE T.estado LIKE 'NUEVO'
+SELECT T.ticketid ,T.clase,T.descripcion,T.detalle,T.estado,T.urgencia,T.clasificacionid,T.creadopor, T.propietario,T.grupopropietario FROM TICKET T
+WHERE T.estado = 'NUEVO'
 
 SELECT * FROM VIEW_ESTADO
 --3.- TRAE LA VISTA DE LA CANTIDAD DE CLASE=SOLICITUDES GENERADOS
 CREATE VIEW CantidadSoli AS
-SELECT COUNT(*) [Cantidad de Solicitudes] FROM TICKET T WHERE T.clase LIKE 'SOLICITUD'
+SELECT COUNT(*) [Cantidad de Solicitudes] FROM TICKET T WHERE T.clase = 'SOLICITUD'
 
 SELECT * FROM CantidadSoli
 
