@@ -23,10 +23,9 @@ namespace Negocio
 
         int CrearIncidente()
         {
-            ConexionBase conexionBase = new ConexionBase();
-            sentenciaSql = "select * from ticket";
-            conexionBase.Select(sentenciaSql);
-
+            //ConexionBase conexionBase = new ConexionBase();
+            //sentenciaSql = "select * from ticket";
+            //conexionBase.Select(sentenciaSql);
 
             return -1;
         }

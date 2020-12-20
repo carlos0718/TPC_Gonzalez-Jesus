@@ -27,7 +27,7 @@
                             <li style="margin-bottom:6px">
                                 &nbsp;<%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Label ID="LblStatus" runat="server" Text="Status :"></asp:Label>
-                                <asp:DropDownList ID="TxtStatus" runat="server" Width="153px" Height="31px"></asp:DropDownList>
+                                <asp:DropDownList ID="DdlStatus" runat="server" OnSelectedIndexChanged="DdlStatus_SelectedIndexChanged" Width="153px" Height="31px"></asp:DropDownList>
                             </li>
                             <li style="margin-bottom:6px">
                                 <%-- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp--%>
@@ -37,7 +37,7 @@
                             </li>
                             <li style="margin-bottom:6px">
                                 <asp:Label ID="LblAssignedGroup" runat="server" Text="Assigned Group :"></asp:Label>
-                                <asp:DropDownList ID="DslAssignedGroup" runat="server" Width="150px" Height="31px"></asp:DropDownList>
+                                <asp:DropDownList ID="DdlAssignedGroup" runat="server" Width="150px" Height="31px"></asp:DropDownList>
                             </li>
                         </ul>
                     </div>

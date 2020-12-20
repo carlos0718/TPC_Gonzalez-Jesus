@@ -196,7 +196,7 @@ drop procedure sp_crearIncidenteNuevo end
 
 go
 
-
+/* Procedimiento de Almacenado para crear incidentes */ 
 CREATE PROCEDURE sp_crearIncidenteNuevo(
 	@descripcion varchar(300),	@detalle varchar ( 3000),	@urgencia int ,	@clasificacionid int,	@creadopor int	
 )
@@ -223,10 +223,32 @@ begin
 	end
 	else
 	begin
-		select 'Error' as Mensaje -- Definir mensaje de error
+		-- select 'Error' as Mensaje -- Definir mensaje de error
+		RAISERROR('Error grave al generar nuevo ticket',16,1)
 	end
 
 end
+
+	/* Procedimiento Almacenado para crear usuarios*/
+CREATE PROCEDURE altaUsuario( @apellido VARCHAR(100),@nombre VARCHAR(100),@fechaNac DATE, @dni int,@cliente bit)
+AS
+BEGIN
+	BEGIN TRY
+
+		INSERT into PERSONA (apellido, nombre, fecha_nacimiento,fecha_alta,DNI,cliente) 
+		VALUES ( @apellido,@nombre,@fechaNac,GETDATE(),@dni,@cliente)
+
+	END TRY
+	BEGIN CATCH
+		RAISERROR('Error al crear usurio nuevo',16,1)
+	END CATCH
+END
+
+
+
+
+
+/*================================================*/
 select * from ticket
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 	/* ============																											 ============ */
