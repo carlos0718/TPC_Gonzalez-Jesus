@@ -3,11 +3,18 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <form id="form" runat="server">
+        <div style="text-align:right">   
+
+                    <asp:Button ID="btnResolved" runat="server" Text="Resolved" />
+                    <asp:Button ID="btnClose" runat="server" Text="Close" />
+                    <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
+                    <asp:Button ID="btnOpen" runat="server" Text="Re-Open" />
+        </div>
         <section>
             <div class="form-group">
                 <div class="row">   
                     <div class="col-sm-6">            
-                     <ul style="list-style-type:none;">
+                     <ul style="list-style-type:none; text-align:center">
                            <li style="margin-bottom:6px"> 
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="LblTktID" runat="server" Text="Ticket N° :"></asp:Label>
                                 <asp:TextBox ID="TxtID" runat="server" Width="180px"></asp:TextBox>
@@ -23,7 +30,7 @@
                     </ul>
                     </div>
                     <div class="col-sm-6">     
-                        <ul style="list-style-type:none;">
+                        <ul style="list-style-type:none; text-align:center">
                             <li style="margin-bottom:6px">
                                 &nbsp;<%--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;--%>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                                 <asp:Label ID="LblStatus" runat="server" Text="Status :"></asp:Label>
@@ -44,14 +51,13 @@
                 </div>
              </div>
         </section>
-        <div>
+        <div style="text-align:center">
             <section>
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<asp:Label ID="LblCase" Text="Case :" runat="server" />
                 <asp:TextBox ID="TxtCase" placeholder="Enter Case title" runat="server" Width="715px" />  
-                <div>
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                    <asp:Label ID="LblDescripton" runat="server" Text="Description :"></asp:Label>
-                    <div>
+                <div >
+                    <asp:Label ID="LblDescripton" runat="server" Text="Description "></asp:Label>
+                    <div style="text-align:center">
                         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         <asp:TextBox ID="TextBox1" runat="server" Height="195px" Width="789px"></asp:TextBox>
                     </div>
