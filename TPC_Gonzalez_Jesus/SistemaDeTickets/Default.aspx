@@ -3,6 +3,14 @@
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
 
     <form id="form" runat="server">
+        <div class="container">
+            <nav class="navbar navbar-light bg-light" style="margin: 30px 10px">
+                <a class="navbar-brand">TICKET IT</a>
+                        <input style="width:300px ; " class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                    
+            </nav>
+         </div>
         <div style="text-align:right">   
 
                     <asp:Button ID="btnResolved" runat="server" Text="Resolved" />
@@ -10,6 +18,7 @@
                     <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
                     <asp:Button ID="btnOpen" runat="server" Text="Re-Open" />
         </div>
+        <br />
         <section>
             <div class="form-group">
                 <div class="row">   

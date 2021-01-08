@@ -11,7 +11,38 @@ namespace SistemaDeTickets
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            //Session["user"] = TxtUsuer.ToString();
 
+            //if(Page.IsPostBack)
+            //{
+            //    if(Session["user"].ToString() == null)
+            //    {
+            //        Response.Redirect("Login.aspx");
+            //    }
+            //    else
+            //    {
+            //        Response.Redirect("Default.aspx");
+            //    }
+            //}
+        }
+
+        protected void BtnAceptar_Click(object sender, EventArgs e)
+        {
+            //Response.Redirect("Default.aspx");
+
+            Session["user"] = TxtUsuer.ToString();
+
+            if (Page.IsPostBack)
+            {
+                if (Session["user"].ToString() != null)
+                {
+                    Response.Redirect("Default.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Login.aspx");
+                }
+            }
         }
     }
 }

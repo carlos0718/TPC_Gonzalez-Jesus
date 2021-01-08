@@ -22,7 +22,7 @@
 </head>
 <body>
 <header>
-    <div class="container">
+    <%--<div class="container">
      <nav class="navbar navbar-light bg-light" style="margin: 30px 10px">
             <a class="navbar-brand">TICKET IT</a>
                 <form class="form-inline" >
@@ -30,7 +30,7 @@
                     <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
                  </form>
         </nav>
-    </div>
+    </div>--%>
 </header>
 
       
@@ -38,8 +38,9 @@
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
+
             <footer>
-                <p>&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
+                <p style="text-align:center">&copy; <%: DateTime.Now.Year %> - Mi aplicación ASP.NET</p>
             </footer>
         </div>
 </body>
