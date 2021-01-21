@@ -1,4 +1,49 @@
-﻿body{
-    background:center;
+﻿
+.body{
+    text-align:center;
     background-color:darkcyan;
+    font-family:Courier New, Courier, monospace;
+}
+.body-content{
+    margin:0px;
+}
+.buttons {
+    text-align: right;
+    border-radius: 10px;
+    padding-bottom: 15px;
+}
+section div ul{
+    list-style-type:none;
+  
+}
+section div ul il {
+   margin-bottom:6px
+}
+.tkt{
+    margin-left: 40px
+}
+.creator{
+    margin-left:57px
+}
+.status{
+    margin-left:185px;
+}
+.assigned{
+    margin-left: 165px;
+}
+.ass-group{
+    margin-left:109px;
+}
+.d-flex{
+    margin:0px;
+}
+#sidebar-container{
+    min-height:100vh;
+}
+#sidebar-container .logo{
+    padding: .875rem 1.25rem;
+    text-align:center;
+}
+#sidebar-container .menu {
+    width: 18em;
 }

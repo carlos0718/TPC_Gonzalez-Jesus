@@ -16,11 +16,10 @@
     <%--<webopt:bundlereference runat="server" path="~/Content/css" />--%>
     <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link href = "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"  rel = "stylesheet" >
     <link rel="stylesheet" href="Style.css"/>
-    
-
 </head>
-<body>
+<body class="body">
 <header>
     <%--<div class="container">
      <nav class="navbar navbar-light bg-light" style="margin: 30px 10px">

@@ -36,7 +36,7 @@ namespace SistemaDeTickets
             {
                 if (Session["user"].ToString() != null)
                 {
-                    Response.Redirect("Default.aspx");
+                    Response.Redirect("DashBoard.aspx");
                 }
                 else
                 {
