@@ -14,15 +14,17 @@ namespace Negocio
         string nombreBase;
         SqlConnection conexion;
         SqlCommand comando ;
-        SqlDataReader lector;
+        public SqlDataReader lector { get; set; }
 
 
 
         public ConexionBase()
         {
+
             rutaConexionLocal = "MATIASLENOVO\\SQLEXPRESS";     // Ruta local unificada para conexion al SQL Server
-            nombreBase = "TICKET_IT";
+            nombreBase = "TPC_GONZALEZ_JESUS";
             rutaBaseDatos = "data source = " + rutaConexionLocal + "; initial catalog = " + nombreBase + "; integrated security = sspi";
+            //rutaBaseDatos = "data source = MATIASLENOVO\\SQLEXPRESS; initial catalog = CATALOGO_DB; integrated security = sspi" 
             conexion = new SqlConnection();
             comando = new SqlCommand();
             conexion.ConnectionString = rutaBaseDatos;
@@ -30,13 +32,14 @@ namespace Negocio
             comando.Connection = conexion;
         }
 
-        public void Select(string sentenciaSql)
+        public SqlDataReader Select(string sentenciaSql)
         {
             comando.CommandText = sentenciaSql;
 
             conexion.Open();
             lector = comando.ExecuteReader();
 
+            return lector;
             //while (lector.Read())
         }
         public int InsertUpdateDel(string sentenciaSql)

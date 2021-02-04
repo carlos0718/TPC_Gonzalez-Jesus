@@ -10,3 +10,9 @@ C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN\2DO.año\UTN 2 II\TP-Final-Lab&P
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN\2DO.año\UTN 2 II\TP-Final-Lab&Prog\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN\2DO.año\UTN 2 II\TP-Final-Lab&Prog\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN\2DO.año\UTN 2 II\TP-Final-Lab&Prog\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.dll
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.pdb
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
+C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb

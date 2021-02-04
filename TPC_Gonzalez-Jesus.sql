@@ -31,36 +31,55 @@ create table PERSONA (
 	nombre varchar(100) not null,  
 	fecha_nacimiento date not null, 
 	fecha_alta date default CURRENT_TIMESTAMP,
-	DNI int NOT NULL PRIMARY KEY,
+	personaid int NOT NULL PRIMARY KEY, -- DNI
 	cliente bit default 0
 	)
 	
-	/* ============   ============   ============ */
-	-- Informacion de contacto de X persona.
-create table INFOCONTACTO(
-	infoconcactoid int identity(1,1) primary key,
-	idpersona int not null unique foreign key references persona(DNI),  /* evaluar si mantener DNI o usar una clumna ID */
-	telefono varchar(10),
-	mail varchar(30),
-	direccion varchar (50)
-	)
-	/* ============   ============   ============ */
+		/* ============   ============   ============ */
 
--- Tabla de Areas, identifica las areas laborales de la empresa o clientes.
+-- Tabla de Areas, identifica las areas laborales de la empresa o clientes.		NO CREADA
 create table AREAS(
 	areasID  TINYINT IDENTITY(1,1) not null PRIMARY KEY ,
 	nombre varchar(50) UNIQUE
 )
 INSERT into AREAS (nombre) values ('TECNICO'),('ADMINISTRATIVO'),('RRHH'),('FINANZAS'),('GERENCIA'),('CLIENTE'),('MANTENIMIENTO'),('VARIOS')
-SELECT * FROM AREAS ORDER by areasID ASC 
 
 	/* ============   ============   ============ */
+
+
 -- Grupo de personas para asignar trabajo en tratamiento de tickets
 create table GrupoPersonas (
 	grupopersonasid int IDENTITY(1,1) primary key ,
-	idpersona int not null unique foreign key references persona(DNI),  /* evaluar si mantener DNI o usar una clumna ID */
-	idarea tinyint not null foreign key references AREAS(areasID)
+	personaid int not null,-- unique foreign key references persona(DNI),  /* evaluar si mantener DNI o usar una clumna ID */
+	areaid tinyint not null,-- foreign key references AREAS(areasID)
 )
+
+
+insert into grupopersonas (idpersona,idarea) values (37189215,(select areasID from AREAS where nombre='ADMINISTRATIVO'))
+	/* ============   ============   ============ */
+
+	--Tabla principal de Tickets
+create table TICKET (
+	--ticketuid int identity(1,1) primary key,	/* identificador unico para todos los tickets */
+	ticketid int identity(1,1) primary key,		/* identificador para cada ticket de su propia clase */
+	--clase varchar(20) not null foreign key REFERENCES CLASETICKET(claseticketid),
+	clase varchar(20) not null ,
+	fecha_creacion datetime default CURRENT_TIMESTAMP,
+	fecha_fin date,
+	descripcion varchar(300) not null,
+	estado varchar(20) not null default 'NUEVO',
+	detalle varchar ( 3000),
+	urgencia int not null default 5,
+	clasificacionid int not null, -- foreign key REFERENCES CLASIFICACION(clasificacionid),
+	historial bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
+	creadopor int not null, -- foreign key references PERSONA(DNI),
+	propietario int, -- foreign key references PERSONA(DNI),
+	grupopropietario tinyint, -- foreign key references AREAS(areasid),
+
+	--constraint Chk_estado check (estado in (select distinct(clase) from ESTADOS)),
+	constraint Chk_clase check (clase in ('INCIDENTE','SOLICITUD','PROBLEMA','OT'))	,
+	constraint Chk_urgencia check (urgencia in (1,2,3,4,5))
+	)
 
 
 	/* ============   ============   ============ */
@@ -76,16 +95,6 @@ create table CLASIFICACION(
 	
 	
 
-	/* ============   ============   ============ */
-	/* Define los distintos estados posibles tanto de tickets como de activos y personas */
-
-create table ESTADOS(		
-	estadoid int identity(1,1) primary key,
-	estado varchar(20) not null, /* Define para que tipo de ticket aplica */
-	dominio varchar(20) not null
-
-	constraint Chk_estado_dominio check (dominio in ('TICKET','ACTIVO','PERSONA','INCIDENTE','PROBLEMA','OT','SOLICITUD'))	
-	)
 
 	
 
@@ -96,32 +105,10 @@ create table ESTADOS(
 --	nombre varchar(20) not null
 --	)
 
-	/* ============   ============   ============ */
 
-	--Tabla principal de Tickets
-create table TICKET (
-	--ticketuid int identity(1,1) primary key,	/* identificador unico para todos los tickets */
-	ticketid int identity(1,1) primary key,		/* identificador para cada ticket de su propia clase */
-	--clase varchar(20) not null foreign key REFERENCES CLASETICKET(claseticketid),
-	clase varchar(20) not null ,
-	fecha_creacion datetime default CURRENT_TIMESTAMP,
-	fecha_fin date,
-	descripcion varchar(300) not null,
-	estado varchar(20) not null default 'NUEVO',
-	detalle varchar ( 3000),
-	urgencia int not null default 5,
-	clasificacionid int not null foreign key REFERENCES CLASIFICACION(clasificacionid),
-	historial bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
-	creadopor int not null foreign key references PERSONA(DNI),
-	propietario int foreign key references PERSONA(DNI),
-	grupopropietario tinyint foreign key references AREAS(areasid),
 
-	--constraint Chk_estado check (estado in (select distinct(clase) from ESTADOS)),
-	constraint Chk_clase check (clase in ('INCIDENTE','SOLICITUD','PROBLEMA','OT'))	,
-	constraint Chk_urgencia check (urgencia in (1,2,3,4,5))
-	)
-
-	
+	select * from ticket
+	select * from CLASIFICACION
 	/* ============   ============   ============ */
 
 	-- Historial de estado de los tickets
@@ -157,7 +144,33 @@ create table REGISTRO(
 	)
 
 go
+
+
+	/* ============   ============   ============ */
+	-- Informacion de contacto de X persona.	NO CREADA
+create table INFOCONTACTO(
+	infoconcactoid int identity(1,1) primary key,
+	idpersona int not null unique foreign key references persona(DNI),  /* evaluar si mantener DNI o usar una clumna ID */
+	telefono varchar(10),
+	mail varchar(30),
+	direccion varchar (50)
+	)
+
 	
+/* ============   ============   ============  DOMINIOS   ============   ============  ============   ============   ============ */
+	/* ============   ============   ============ */
+	/* Define los distintos estados posibles tanto de tickets como de activos y personas */
+
+create table ESTADOS(		
+	estadoid int identity(1,1) primary key,
+	estado varchar(20) not null, /* Define para que tipo de ticket aplica */
+	dominio varchar(20) not null
+
+	constraint Chk_estado_dominio check (dominio in ('TICKET','ACTIVO','PERSONA','INCIDENTE','PROBLEMA','OT','SOLICITUD'))	
+	)
+
+
+
 /* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 /* ============									DATOS DE PRUEBA														     ============ */
 /* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
@@ -171,8 +184,8 @@ insert into persona (apellido,nombre,fecha_nacimiento,DNI) values
 	('JESUS','CARLOS','1994-10-07', 222)
 
 
-INSERT into ESTADOS (estado,dominio) values ('NUEVO','INCIDENTE'),('EN COLA','INCIDENTE'),('EN PROGRESO','INCIDENTE'),('RESUELTO','INCIDENTE'),('CERRADO','INCIDENTE'),('CANCELADO','INCIDENTE')
-INSERT into ESTADOS (estado,dominio) values ('NUEVO','SOLICITUD'),('EN COLA','SOLICITUD'),('EN PROGRESO','SOLICITUD'),('RESUELTO','SOLICITUD'),('CERRADO','SOLICITUD'),('CANCELADO','SOLICITUD')
+--INSERT into ESTADOS (estado,dominio) values ('NUEVO','INCIDENTE'),('EN COLA','INCIDENTE'),('EN PROGRESO','INCIDENTE'),('RESUELTO','INCIDENTE'),('CERRADO','INCIDENTE'),('CANCELADO','INCIDENTE')
+--INSERT into ESTADOS (estado,dominio) values ('NUEVO','SOLICITUD'),('EN COLA','SOLICITUD'),('EN PROGRESO','SOLICITUD'),('RESUELTO','SOLICITUD'),('CERRADO','SOLICITUD'),('CANCELADO','SOLICITUD')
 
 insert into TICKET (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor) 
 VALUES ('INCIDENTE','Pantallazo azul','El cliente reporta que tiene repetidos pantallazos azul indicando memoria insuficiente','NUEVO',3,1,222)
@@ -183,8 +196,11 @@ insert into GrupoPersonas (idpersona,idarea) values (111,1), (222,1)
 
 
 go
+use TPC_GONZALEZ_JESUS
+drop table GrupoPersonas
+drop table AREAS
 
-
+drop table persona
 
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 	/* ============																											 ============ */
@@ -243,6 +259,7 @@ BEGIN
 		RAISERROR('Error al crear usurio nuevo',16,1)
 	END CATCH
 END
+
 
 
 

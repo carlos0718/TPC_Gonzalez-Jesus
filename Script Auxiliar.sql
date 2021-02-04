@@ -29,3 +29,4 @@ exec sp_crearIncidenteNuevo 'nueva desc','larga desc',3,1,222
 select * from ticket
 
 
+select * from persona

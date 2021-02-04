@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using Negocio;
 
 namespace SistemaDeTickets
 {
@@ -13,13 +14,31 @@ namespace SistemaDeTickets
         protected void Page_Load(object sender, EventArgs e)
         {
 
-            opcionesDeTicket = new List<string>();
-            opcionesDeTicket.Add("INCIDENTE");
-            opcionesDeTicket.Add("SOLICITUD");
-            //ddlTipoTicket.DataSource = opcionesDeTicket;
-            //ddlTipoTicket.DataBind();
+            
+
+
+            // Creacion de un ticket nuevo:
+            TicketNegocio tkt = new TicketNegocio();
+            ddl_ListaClases.DataSource = tkt.ticket.ClasesTicket;
+            ddl_ListaClases.DataBind();
+            ddl_Urgencia.DataSource = tkt.ticket.Urgencias;
+            ddl_Urgencia.DataBind();
         }
 
+        protected void btnTest_Click(object sender, EventArgs e)
+        {
+           
+            if (tb_Ticketid.Text != String.Empty)
+            {
+                TicketNegocio tkt = new TicketNegocio();
 
+                tkt.ObtenerTicket(Int32.Parse(tb_Ticketid.Text));
+                lbl_Ticketid_value.Text = tkt.ticket.ticketid.ToString();
+                lblClaseTicket_Value.Text = tkt.ticket.descripcion;
+
+            }
+
+
+        }
     }
 }

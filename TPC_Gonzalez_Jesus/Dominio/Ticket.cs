@@ -21,15 +21,28 @@ namespace Dominio
 		clasificacionid int not null foreign key REFERENCES CLASIFICACION(clasificacionid),
 			*/
 		//uint ticketuid;
-		uint ticketid;
-		string clase;
+		public uint ticketid { get; set; }
+		public string clase { get; set; }
+		public List<string> ClasesTicket { get; }
+		
 		DateTime fecha_creacion;
 		DateTime fecha_fin;
-		string descripcion;
+		public string descripcion { get; set; }
 		string estado;
+		public List<string> EstadosIncidente { get; }
+
 		string detalle;
 		byte urgencia;
+		public List<byte> Urgencias { get; }
+
 		byte clasificacionid;
 
+
+		public Ticket()
+        {
+			ClasesTicket=new List<string>(new string[] { "INCIDENTE", "SOLICITUD", "PROBLEMA","OT" } );
+            Urgencias = new List<byte>(new byte[] { 1, 2, 3, 4, 5 });
+			EstadosIncidente = new List<string>(new string[] { "NUEVO", "EN COLA", "EN PROGRESO", "RESUELTO", "CANCELADO", "CERRADO" });
+		}
     }
 }
