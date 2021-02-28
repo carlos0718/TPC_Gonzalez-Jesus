@@ -48,8 +48,8 @@ create table [Password] (
 		
 		/* ============   ============   ============ */
 
-	-- La tabla se usara como referencias para dominios (no se aplicarán constraints para evitar errores durante las pruebas)
-	-- La misma permitira acceder a la información requerida para los desplegables dentro de la app según el tipo_dominio
+	-- La tabla se usara como referencias para dominios (no se aplicarï¿½n constraints para evitar errores durante las pruebas)
+	-- La misma permitira acceder a la informaciï¿½n requerida para los desplegables dentro de la app segï¿½n el tipo_dominio
 
 
 create table DOMINIOS (
@@ -196,7 +196,6 @@ create table ESTADOS(
 	dominio varchar(20) not null
 
 	constraint Chk_estado_dominio check (dominio in ('TICKET','ACTIVO','PERSONA','INCIDENTE','PROBLEMA','OT','SOLICITUD'))	
-	)
 
 	*/
 
@@ -269,7 +268,7 @@ SELECT * FROM CantidadSoli
 
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 	/* ============																											 ============ */
-	/* ============									 		 TRIGGERS	             										     ============ */
+	/* ============									 		 TRIGGERS	             										 ============ */
 	/* ============																											 ============ */
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 

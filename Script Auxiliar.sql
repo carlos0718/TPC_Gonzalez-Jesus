@@ -21,5 +21,5 @@ CREATE PROCEDURE sp_crearIncidenteNuevo(
 AS
 begin 
 	insert into ticket (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor) 
-	VALUES ('INCIDENTE', 'Apagado automatico',' UN cliente reporta que su pc se apaga sola'
+	VALUES ('INCIDENTE', 'Apagado automatico',' UN cliente reporta que su pc se apaga sola')
 

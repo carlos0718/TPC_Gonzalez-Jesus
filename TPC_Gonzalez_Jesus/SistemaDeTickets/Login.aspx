@@ -23,13 +23,13 @@
                         <a ></a>
                     </div>
                     
-                     <div class="card-header" style="text-align:center"> Si no tenes usuario, registrate </div>
+                     <div class="card-header" style="text-align:center ; font-size:11px"> Si no tenes usuario, registrate </div>
                         <div class="card-footer" style="text-align:center">
                         <asp:Button ID="btxRegistrar" runat="server" Text="Registrar" OnClick="btxRegistrar_Click" />
                         <a ></a>
+                    </div>
                 </div>
-            </div>
-             
+              </div>   
         </div>
     </form>
 </asp:Content>
