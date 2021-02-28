@@ -28,17 +28,26 @@ go
 /* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 
 -- Tabla principal de personas identificadas por su DNI.
+
+if OBJECT_ID('PERSONA') is not null
+drop table persona
+go
+
 create table PERSONA (
 	apellido varchar(100) not null,
 	nombre varchar(100) not null,  
 	fecha_nacimiento date not null, 
 	fecha_alta date default CURRENT_TIMESTAMP,
 	DNI int NOT NULL PRIMARY KEY,
+	activo bit default 1,
 	cliente bit default 0
 	)
 
 	
 		/* ============   ============   ============ */
+if OBJECT_ID('[Password]') is not null
+drop table [Password]
+go
 
 create table [Password] (
 	DNI int primary key foreign key references PERSONA(DNI),
@@ -50,7 +59,9 @@ create table [Password] (
 
 	-- La tabla se usara como referencias para dominios (no se aplicar�n constraints para evitar errores durante las pruebas)
 	-- La misma permitira acceder a la informaci�n requerida para los desplegables dentro de la app seg�n el tipo_dominio
-
+if OBJECT_ID('DOMINIOS') is not null
+drop table DOMINIOS
+go
 
 create table DOMINIOS (
 	dominioid smallint identity(1,1) primary key,
@@ -72,6 +83,9 @@ create table DOMINIOS (
 
 
 -- Grupo de personas para asignar trabajo en tratamiento de tickets
+if OBJECT_ID('GrupoPersonas') is not null
+drop table GrupoPersonas
+go
 
 create table GrupoPersonas (
 	grupopersonasid int IDENTITY(1,1) primary key ,
@@ -82,6 +96,11 @@ create table GrupoPersonas (
 insert into grupopersonas (idpersona,idarea) values (37189215,(select areasID from AREAS where nombre='ADMINISTRATIVO'))
 	/* ============   ============   ============ */
 
+if OBJECT_ID('ticket') is not null
+drop table ticket
+go
+
+drop table ticket
 	--Tabla principal de Tickets
 create table TICKET (
 	--ticketuid int identity(1,1) primary key,	/* identificador unico para todos los tickets */
@@ -94,11 +113,12 @@ create table TICKET (
 	descripcion varchar(300) not null,
 	estado varchar(20) not null default 'NUEVO',
 	detalle varchar ( 3000),
-	urgencia int not null default 5,
-	clasificacionid int not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
-	historial bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
+	urgencia tinyint not null default 5,
+	clasificacionid tinyint not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
+	historico bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
 	creadopor int not null, --foreign key references PERSONA(DNI),
-	propietario int foreign key references PERSONA(DNI),
+	reportadopor int not null,
+	propietario int ,--foreign key references PERSONA(DNI),
 	grupo_propietario tinyint --foreign key references AREAS(areasid),
 
 	--constraint Chk_estado check (estado in (select distinct(clase) from ESTADOS)),
@@ -106,10 +126,13 @@ create table TICKET (
 	--constraint Chk_urgencia check (urgencia in (1,2,3,4,5))
 	)
 
-
+	select ticketid,descripcion,estado,urgencia,,fecha_creacion,fecha_fin,historico from ticket where propietario=37189215
 
 	/* ============   ============   ============ */
 	-- Tabla de clasificaciones para asignar la naturaleza de un ticket o el tipo de un Activo
+if OBJECT_ID('CLASIFICACION') is not null
+drop table CLASIFICACION
+go
 
 create table CLASIFICACION(
 	clasificacionid int identity(1,1) primary key,
@@ -119,9 +142,6 @@ create table CLASIFICACION(
 
 	--constraint Chk_clase_clasif check (clase in ('INCIDENTE','SOLICITUD','PROBLEMA','OT','ACTIVO'))	
 	)
-
-	insert into CLASIFICACION (clase,rubro,nombre) values ('INCIDENTE','INCIDENTE','Inconveniente con RAM')
-	
 
 
 	
@@ -140,11 +160,14 @@ create table CLASIFICACION(
 	/* ============   ============   ============ */
 
 	-- Historial de estado de los tickets
-create table tkstatushistory(
-	tkstatushistory int identity(1,1) primary key,
+drop table tkhistory
+go
+create table tkhistory(
+	tkhistory int identity(1,1) primary key,
+	ticketid int not null,
 	estado varchar(20) not null,
 	fecha datetime not null default CURRENT_TIMESTAMP,
-	propietario int not null foreign key REFERENCES PERSONA(DNI)
+	propietario int --not null foreign key REFERENCES PERSONA(DNI)
 )
 
 	/* ============   ============   ============ */
@@ -203,13 +226,50 @@ create table ESTADOS(
 /* ============									DATOS DE PRUEBA														     ============ */
 /* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 
+select * from ticket where propietario=37189215
+--PERSONAS
+--exec sp_crearUsuarioNuevo @DNI int,@nombre varchar(100),@apellido varchar(100),@fecha_nacimiento date	,@cliente bit,@password varchar(64)
+
+exec sp_crearUsuarioNuevo 37189215,'Matias','Gonzalez','1993-05-16' ,0, 'prog2021'
+exec sp_crearUsuarioNuevo 95346499,'Carlos','Jesus','1992-02-07' ,0, 'prog2021'
+exec sp_crearUsuarioNuevo 11111111,'Angel','Simon','1990-01-01' ,0, 'profesor'
+
+exec sp_crearUsuarioNuevo 18692421,'Juan','Perez','1993-05-16' ,1, 'generica'
+exec sp_crearUsuarioNuevo 18692422,'Pedro','Calac','1993-05-16' ,1, 'generica'
+exec sp_crearUsuarioNuevo 18692423,'Daniel','Ayala','1993-05-16' ,1, 'generica'
+exec sp_crearUsuarioNuevo 18692424,'Paula','Campos','1993-05-16' ,1, 'generica'
+exec sp_crearUsuarioNuevo 18692425,'Estaban','Molina','1993-05-16' ,1, 'generica'
 
 
-insert into CLASIFICACION (clase,rubro,nombre) values ('INCIDENTE','INCIDENTE','Inconveniente con RAM')
+	--DOMINIOS
+insert into DOMINIO (tipo_dominio,valor_texto) values   ('AREA','TECNICO'),('AREA','ADMINISTRATIVO'),('AREA','CLIENTE'),
+									     			   
+											     		('TIPO TICKET','INCIDENTE'),('TIPO TICKET','SOLICITUD'),('TIPO TICKET','ORDEN DE TRABAJO'),
+														('ESTADO ACTIVO','OPERATIVO'),('ESTADO ACTIVO','BAJA')
 
-insert into persona (apellido,nombre,fecha_nacimiento,DNI) values  
-	('GONZALEZ','MATIAS','1993-05-16', 111),
-	('JESUS','CARLOS','1994-10-07', 222)
+insert into DOMINIO (tipo_dominio,valor_texto,valor_entero) values  ('ESTADO','NUEVO',0),('ESTADO','EN COLA',1),('ESTADO','EN PROGRESO',2),('ESTADO','RESUELTO',3),('ESTADO','CANCELADO',3)
+
+insert into DOMINIO (tipo_dominio,valor_entero) values ('URGENCIA',1),('URGENCIA',2),('URGENCIA',3),('URGENCIA',4),('URGENCIA',5)
+
+
+	-- CLASIFICACION
+insert into CLASIFICACION (clase,rubro,nombre) values ('INCIDENTE','Falla Hardware','RAM'),
+														('INCIDENTE','Falla Hardware','MotherBoard'),
+														('INCIDENTE','Falla Hardware','Fuente alimentacion'),
+														('INCIDENTE','Falla Software','Virus/malware'),
+														('INCIDENTE','Falla Software','Activacion de windows'),
+														  
+														('SOLICITUD','Nuevo componente','UPS'),
+														('SOLICITUD','Nuevo componente','Nuevo equipo entero'),
+														('SOLICITUD','Cambio de equipo','Monitor Nuevo'),
+														('SOLICITUD','Software','Instalacion de cliente FTP'),
+
+														--Los problemas se consideran incidentes ajenos a la empresa, pero que afectan a nuestros clientes o arreglos
+														('PROBLEMA','Servidor','Proveedor caido'),
+														('PROBLEMA','Apagado intermitente','Central electrica defectuosa')
+	
+	
+
 
 
 --INSERT into ESTADOS (estado,dominio) values ('NUEVO','INCIDENTE'),('EN COLA','INCIDENTE'),('EN PROGRESO','INCIDENTE'),('RESUELTO','INCIDENTE'),('CERRADO','INCIDENTE'),('CANCELADO','INCIDENTE')
@@ -218,16 +278,17 @@ insert into persona (apellido,nombre,fecha_nacimiento,DNI) values
 insert into TICKET (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor) 
 VALUES ('INCIDENTE','Pantallazo azul','El cliente reporta que tiene repetidos pantallazos azul indicando memoria insuficiente','NUEVO',3,1,222)
 
+exec sp_crearIncidenteNuevo	'Pantallazo Verde',	'El cliente reporta que tiene una pc muy mala',	3 ,	1,37189215,	37189215
 
+exec sp_avanzarEstadoTicket	1, 37189215 , 'EN COLA'
 
+exec sp_asignarPropietarioTicket 1, 37189215 , 1
 
-insert into DOMINIO (tipo_dominio,valor_texto) values   ('AREA','TECNICO'),('AREA','ADMINISTRATIVO'),('AREA','CLIENTE'),
-									     			    ('ESTADO','NUEVO'),('ESTADO','EN COLA'),('ESTADO','EN PROGRESO'),('ESTADO','RESUELTO'),('ESTADO','CANCELADO'),
-											     		('TIPO TICKET','INCIDENTE'),('TIPO TICKET','SOLICITUD'),('TIPO TICKET','ORDEN DE TRABAJO'),
-														('ESTADO ACTIVO','OPERATIVO'),('ESTADO ACTIVO','BAJA')
+select * from ticket
+select * from tkhistory
+	
+	select * from persona
 
-
-insert into DOMINIO (tipo_dominio,valor_entero) values ('URGENCIA',1),('URGENCIA',2),('URGENCIA',3),('URGENCIA',4),('URGENCIA',5)
 
 
 insert into GrupoPersonas (idpersona,idarea) values (111,1), (222,1)

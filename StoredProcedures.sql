@@ -11,7 +11,13 @@ go
 
 
 	/* ============									 CREAR NUEVO USUARIO										     ============ */
-alter procedure sp_crearUsuarioNuevo (
+
+begin if (OBJECT_ID(N'sp_crearUsuarioNuevo') is not null) 
+drop procedure sp_crearUsuarioNuevo end
+
+go
+
+create procedure sp_crearUsuarioNuevo (
 		@DNI int,
 		@nombre varchar(100),
 		@apellido varchar(100),
@@ -44,7 +50,14 @@ select * from persona
 
 
 	/* ============									 Loguear usuario										     ============ */
-alter procedure sd_loguearUsuario (
+
+begin if (OBJECT_ID(N'sd_loguearUsuario') is not null) 
+drop procedure sd_loguearUsuario end
+
+go
+
+
+create procedure sd_loguearUsuario (
 		@dni int,
 		@password varchar(64)
 )
@@ -74,20 +87,23 @@ go
 
 /* Procedimiento de Almacenado para crear incidentes */ 
 CREATE PROCEDURE sp_crearIncidenteNuevo(
-	@descripcion varchar(300),	@detalle varchar ( 3000),	@urgencia int ,	@clasificacionid int,	@creadopor int	
+	@descripcion varchar(300),	@detalle varchar ( 3000),	@urgencia tinyint ,	@clasificacionid tinyint,	
+	@creadopor int,	 @reportadopor int
 )
+
 AS
 begin 
 	declare @succes bit=0
 	begin try
-		insert into [TICKET] (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor) 
-		VALUES ('INCIDENTE', @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor)
+		insert into [TICKET] (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor,reportadopor) 
+		VALUES	('INCIDENTE', @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor,@reportadopor)
 
 		set @succes = case when @@rowcount =0 then 0 else 1 end 
+
 		declare @ticketid int = SCOPE_IDENTITY() -- Asigna el valor a la ultima PK creada, en este caso el ticketID 
 
-		insert into [tkstatushistory] (ticketid,estado,clase)
-		values (@ticketid,'NUEVO','INCIDENTE')
+		insert into [tkhistory] (ticketid,estado)
+		values (@ticketid,'NUEVO')
 	end try
 	begin catch
 		set @succes=0
@@ -101,24 +117,54 @@ begin
 	begin
 		-- select 'Error' as Mensaje -- Definir mensaje de error
 		RAISERROR('Error grave al generar nuevo ticket',16,1)
+		select 0 as [return]
 	end
 
 end
 
-	/* Procedimiento Almacenado para crear usuarios*/
-CREATE PROCEDURE altaUsuario( @apellido VARCHAR(100),@nombre VARCHAR(100),@fechaNac DATE, @dni int,@cliente bit)
+
+	/* ============									 AVANZAR ESTADO TICKET				 ============ */
+begin if (OBJECT_ID(N'sp_avanzarEstadoTicket') is not null) 
+drop procedure sp_avanzarEstadoTicket end
+
+go
+
+CREATE PROCEDURE sp_avanzarEstadoTicket(
+	@ticketid int, @usuario int , @nuevoestado varchar(20)
+)
+
 AS
-BEGIN
-	BEGIN TRY
+begin
+	begin try
+		update ticket set estado = @nuevoestado where ticketid = @ticketid
+		insert into tkhistory (ticketid,estado) values (@ticketid,@nuevoestado)
+	end try
+	begin catch
+		--loggear error
+	end catch
+end
 
-		INSERT into PERSONA (apellido, nombre, fecha_nacimiento,fecha_alta,DNI,cliente) 
-		VALUES ( @apellido,@nombre,@fechaNac,GETDATE(),@dni,@cliente)
+	/* ============									 ASIGNAR PROPIETARIO TICKET				 ============ */
+begin if (OBJECT_ID(N'sp_asignarPropietarioTicket') is not null) 
+drop procedure sp_avanzarEstadoTicket end
 
-	END TRY
-	BEGIN CATCH
-		RAISERROR('Error al crear usurio nuevo',16,1)
-	END CATCH
-END
+go
 
+CREATE PROCEDURE sp_asignarPropietarioTicket(
+	@ticketid int, @nuevopropietario int , @nuevogrupopropietario tinyint
+)
 
-
+AS
+begin
+	begin try
+		if @nuevopropietario=null 
+			update ticket set grupo_propietario = @nuevogrupopropietario where ticketid = @ticketid
+		else begin
+			update ticket set propietario = @nuevopropietario where ticketid = @ticketid
+			insert into tkhistory (ticketid,estado,propietario) values (@ticketid, (select estado from ticket where ticketid=@ticketid) ,@nuevopropietario)
+		end
+	end try
+	begin catch
+		--loggear error
+	end catch
+end

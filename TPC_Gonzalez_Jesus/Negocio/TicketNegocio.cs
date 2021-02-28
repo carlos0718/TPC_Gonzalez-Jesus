@@ -4,8 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Dominio;
+using System.Data;
+using System.ComponentModel;
 
 namespace Negocio
+
 {
     public class TicketNegocio
     {
@@ -78,13 +81,46 @@ namespace Negocio
             return -1;
         }
 
+        public BindingList<Ticket> ObtenerTablaPorReportado(int reportadopor) // 0 reportadopor - 1 propietario 
+        {
 
+            string sentencia = "select ticketid,descripcion,estado,urgencia,fecha_creacion,fecha_fin,historico from ticket where reportadopor=" + reportadopor.ToString();
+
+            conn.Lector=conn.Select(sentencia);
+            BindingList<Ticket> lista = new BindingList<Ticket>();
+            Ticket aux;
+            
+            while  (conn.Lector.Read())
+            {
+                aux = new Ticket();
+                
+                aux.ticketid= (uint)conn.Lector.GetInt32(0);
+                aux.descripcion = conn.Lector.GetString(1);
+                aux.Estado= conn.Lector.GetString(2);
+                aux.Urgencia= conn.Lector.GetByte(3);
+                aux.fecha_creacion = conn.Lector.GetDateTime(4);
+                try
+                {
+                    aux.fecha_fin = conn.Lector.GetDateTime(5);
+                }catch
+                { }
+                
+                aux.Historico = conn.Lector.GetBoolean(6);
+
+                lista.Add(aux);
+            }
+
+            return lista;
+
+        }
 
     }
 
+
+
     //public List<string> ObtenerClaseTickets ()
     //{
-        
+
 
     //}
 

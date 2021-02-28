@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
-
+using System.Data;
 namespace Negocio
 {
     public class ConexionBase
@@ -15,8 +15,8 @@ namespace Negocio
         SqlConnection conexion;
         SqlCommand comando ;
         public SqlDataReader Lector { get; set; }
-
-
+        public SqlDataAdapter Adapter;
+        
 
         public ConexionBase()
         {
@@ -42,6 +42,8 @@ namespace Negocio
             return Lector;
             //while (Lector.Read())
         }
+
+
         public int InsertUpdateDel(string sentenciaSql)
         {
             comando.CommandText = sentenciaSql;

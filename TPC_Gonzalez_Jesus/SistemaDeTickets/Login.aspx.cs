@@ -45,10 +45,19 @@ namespace SistemaDeTickets
                 return;
             }
 
+            per.ObtenerPersona(code);
 
-                Session["user"] = code.ToString();
-                    
-                Response.Redirect("DashBoard.aspx");
+
+            Session["dni"] = code.ToString();
+            Session["nombre"] = per.Persona.Nombre;
+            Session["apellido"] = per.Persona.Apellido;
+            Session["alta"] = per.Persona.Fecha_alta;
+            Session["nacimiento"] = per.Persona.Fecha_nacimiento;
+            Session["escliente"] = per.Persona.Cliente;
+
+            if (per.Persona.Cliente)
+                Response.Redirect("AutoServicio.aspx");
+            Response.Redirect("DashBoard.aspx");
 
             
         }

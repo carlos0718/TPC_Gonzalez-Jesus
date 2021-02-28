@@ -25,17 +25,18 @@ namespace Dominio
 		public string clase { get; set; }
 		public List<string> ClasesTicket { get; }
 		
-		DateTime fecha_creacion;
-		DateTime fecha_fin;
+		public DateTime fecha_creacion { get; set; }
+		public DateTime fecha_fin { get; set; }
 		public string descripcion { get; set; }
 		string estado;
-		public List<string> EstadosIncidente { get; }
-
+		public string Estado { get; set; }
 		string detalle;
-		byte urgencia;
+		public byte Urgencia { get; set; }
+		public byte clasificacionid { get; set; }
+		public bool Historico { get; set; }
 		public List<byte> Urgencias { get; }
 
-		byte clasificacionid;
+		public List<string> EstadosIncidente { get; }
 
 
 		public Ticket()
