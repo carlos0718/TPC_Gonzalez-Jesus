@@ -8,11 +8,12 @@ namespace Dominio
 {
     public class Persona
     {
-        int DNI;
-        string nombre;
-        string apellido;
-        DateTime fecha_nacimiento;
-        DateTime fecha_alta;
-        bool cliente;
+        public int DNI { get; set; }
+        public string Nombre { get; set; }
+        public string Apellido { get; set; }
+        public DateTime Fecha_nacimiento { get; set; }
+        public DateTime Fecha_alta { get; set; }
+        public bool Cliente { get; set; }
+        public string Password { set { Password = value; } }
     }
 }

@@ -9,6 +9,9 @@
 </head>
 <body>
     <form id="form1" runat="server">
+
+
+        <div runat="server" visible="true" id="div_Inicial">
                 <div>
                     
                     <asp:Label ID="lbl_ClienteEmpleado" Text="Es cliente o empleado?" runat="server"   />
@@ -30,7 +33,7 @@
 
                 <asp:TextBox runat="server" ID="txtb_Date" TextMode="Date" />
 
-                <asp:DropDownList ID="ddl_Ano" runat="server"  AutoPostBack="false"   >
+              <%--  <asp:DropDownList ID="ddl_Ano" runat="server"  AutoPostBack="false"   >
                     <asp:ListItem selected hidden>Año</asp:ListItem>
                      <asp:ListItem>1993</asp:ListItem>
                 </asp:DropDownList>
@@ -41,14 +44,22 @@
                 <asp:DropDownList ID="ddl_Dia" runat="server"  AutoPostBack="false"   >
                     <asp:ListItem selected hidden>Dia</asp:ListItem>
                      <asp:ListItem>16</asp:ListItem>
-                </asp:DropDownList>
-
+                </asp:DropDownList>--%>
+        <br />
+        <asp:Label runat="server" ID="lbl_esCliente" Text="Es Cliente?: " />
+        <asp:CheckBox runat="server" ID="cb_EsCliente" Checked="false" />
         <br />
         <asp:TextBox runat="server" ID="txtb_Password" placeholder="Ingrese contraseña" TextMode="Password"/>
         <asp:TextBox runat="server" ID="txtb_PassWordConfirm" placeholder="Confirme contraseña" TextMode="Password"/>
 
         <asp:Button runat="server" ID="btn_Confirmar" Text="Enviar" OnClick="btn_Confirmar_Click" />
 
+        </div>
+        <div id="div_final" runat="server" visible="false">
+        <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
+            <asp:Button runat="server" Text="Continuar" />
+
+        </div>
     </form>
 </body>
 </html>

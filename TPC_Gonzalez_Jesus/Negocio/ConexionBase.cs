@@ -14,7 +14,7 @@ namespace Negocio
         string nombreBase;
         SqlConnection conexion;
         SqlCommand comando ;
-        public SqlDataReader lector { get; set; }
+        public SqlDataReader Lector { get; set; }
 
 
 
@@ -37,10 +37,10 @@ namespace Negocio
             comando.CommandText = sentenciaSql;
 
             conexion.Open();
-            lector = comando.ExecuteReader();
+            Lector = comando.ExecuteReader();
 
-            return lector;
-            //while (lector.Read())
+            return Lector;
+            //while (Lector.Read())
         }
         public int InsertUpdateDel(string sentenciaSql)
         {
@@ -54,13 +54,16 @@ namespace Negocio
 
         public void Cerrar()
         {
-            lector.Close();
-            conexion.Close();
+            if (Lector!=null)
+                Lector.Close();
+
+            if (conexion!=null)
+                conexion.Close();
         }
 
         public SqlDataReader ExecuteSP(string name,string parameters)
         {
-            comando.CommandText = "exec "+name+parameters;
+            comando.CommandText = "exec "+name+" "+parameters;
             //"INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio,imagenurl) " + "VALUES('" + nuevo.codArticulo + "','" +
             //nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.marca.ID + ", " + nuevo.categoria.ID + ", '" + nuevo.Precio + "','" + nuevo.Imagen + "')"; 
             conexion.Open();

@@ -11,7 +11,7 @@ namespace SistemaDeTickets
 {
 
 
-    public partial class Registro
+    public partial class Personas
     {
 
         /// <summary>
@@ -24,33 +24,6 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
-        /// Control div_Inicial.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_Inicial;
-
-        /// <summary>
-        /// Control lbl_ClienteEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ClienteEmpleado;
-
-        /// <summary>
-        /// Control ddl_ClienteEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_ClienteEmpleado;
-
-        /// <summary>
         /// Control txtb_DNI.
         /// </summary>
         /// <remarks>
@@ -60,40 +33,94 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_DNI;
 
         /// <summary>
-        /// Control txtb_Nombre.
+        /// Control btn_BuscarDNI.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtb_Nombre;
+        protected global::System.Web.UI.WebControls.Button btn_BuscarDNI;
 
         /// <summary>
-        /// Control txtb_Apellido.
+        /// Control lbl_Apellido.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtb_Apellido;
+        protected global::System.Web.UI.WebControls.Label lbl_Apellido;
 
         /// <summary>
-        /// Control txtb_Date.
+        /// Control lbl_Apellido_Value.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtb_Date;
+        protected global::System.Web.UI.WebControls.Label lbl_Apellido_Value;
 
         /// <summary>
-        /// Control lbl_esCliente.
+        /// Control lbl_Nombre.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_esCliente;
+        protected global::System.Web.UI.WebControls.Label lbl_Nombre;
+
+        /// <summary>
+        /// Control lbl_Nombre_Value.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Nombre_Value;
+
+        /// <summary>
+        /// Control lbl_Alta.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Alta;
+
+        /// <summary>
+        /// Control lbl_Alta_value.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Alta_value;
+
+        /// <summary>
+        /// Control lbl_Nacimiento.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Nacimiento;
+
+        /// <summary>
+        /// Control lbl_Nacimiento_value.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Nacimiento_value;
+
+        /// <summary>
+        /// Control lbl_EsCliente.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_EsCliente;
 
         /// <summary>
         /// Control cb_EsCliente.
@@ -103,50 +130,5 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.CheckBox cb_EsCliente;
-
-        /// <summary>
-        /// Control txtb_Password.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtb_Password;
-
-        /// <summary>
-        /// Control txtb_PassWordConfirm.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtb_PassWordConfirm;
-
-        /// <summary>
-        /// Control btn_Confirmar.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btn_Confirmar;
-
-        /// <summary>
-        /// Control div_final.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_final;
-
-        /// <summary>
-        /// Control lbl_returnInfo.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_returnInfo;
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Negocio;
 namespace SistemaDeTickets
 {
     public partial class Registro : System.Web.UI.Page
@@ -36,6 +36,18 @@ namespace SistemaDeTickets
 
         protected void btn_Confirmar_Click(object sender, EventArgs e)
         {
+            PersonaNegocio per = new PersonaNegocio();
+            int return_code = 0;
+
+            return_code=per.RegistrarPersona(Int32.Parse(txtb_DNI.Text), txtb_Nombre.Text, txtb_Apellido.Text,txtb_Date.Text, cb_EsCliente.Checked, txtb_Password.Text);
+
+            div_Inicial.Visible = false;
+            div_final.Visible = true;
+
+            if (return_code == 0)
+                lbl_returnInfo.Text = "Ha fallado la creacion";
+            else
+                lbl_returnInfo.Text = "Se registro correctamente el usuario";
 
         }
     }

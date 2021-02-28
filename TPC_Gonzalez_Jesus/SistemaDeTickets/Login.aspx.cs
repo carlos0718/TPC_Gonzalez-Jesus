@@ -4,7 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-
+using Negocio;
 namespace SistemaDeTickets
 {
     public partial class Login : System.Web.UI.Page
@@ -30,20 +30,27 @@ namespace SistemaDeTickets
         {
             //Response.Redirect("Default.aspx");
 
-            Session["user"] = TxtUsuer.ToString();
+            if (String.IsNullOrEmpty(TxtUsuer.Text))
+                return;
 
-            if (Page.IsPostBack)
+            int code = 0;
+            PersonaNegocio per = new PersonaNegocio();
+
+            code = per.LogInPersona(Int32.Parse(TxtUsuer.Text), TxtPass.Text);
+
+
+            if (code == 0)
             {
-                if (Session["user"].ToString() != null)
-                {
-                    
-                    //Response.Redirect("DashBoard.aspx");
-                }
-                else
-                {
-                    Response.Redirect("Login.aspx");
-                }
+                LbError.Visible = true;
+                return;
             }
+
+
+                Session["user"] = code.ToString();
+                    
+                Response.Redirect("DashBoard.aspx");
+
+            
         }
 
         protected void btxRegistrar_Click(object sender, EventArgs e)

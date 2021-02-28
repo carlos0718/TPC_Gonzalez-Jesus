@@ -24,14 +24,14 @@ as
 begin
 	begin try
 		 if  exists (select 1 from PERSONA where DNI=@DNI) begin
-			select 'Error el DNI ya se encuentra cargado' as [return]
+			select 0 as code,'Error el DNI ya se encuentra cargado' as [message]
 			return
 		end 
 		
 		insert into persona (DNI,nombre,apellido,fecha_nacimiento,cliente) values (@DNI,@nombre,@apellido,@fecha_nacimiento,@cliente) 
 		IF not (@password IS NULL OR @password = '')
 			insert into [password] (DNI,password_login) values (@DNI,HASHBYTES('SHA2_512', @password) )
-		select 'Se cargo ok el DNI: '+cast(@DNI as varchar(10) ) as  [return]
+		select  @dni as code,'Se cargo ok el DNI: '+cast(@DNI as varchar(10) ) as  [message]
 	end try
 	begin catch
 		select ERROR_MESSAGE()
@@ -40,7 +40,7 @@ end
 
 
 exec sp_crearUsuarioNuevo 37189215,'Matias','Gonzalez','1993-05-16',0, 'prog2021'
-
+select * from persona
 
 
 	/* ============									 Loguear usuario										     ============ */

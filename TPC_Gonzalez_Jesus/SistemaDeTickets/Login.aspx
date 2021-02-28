@@ -13,6 +13,7 @@
                 <div class="card-body bg-secondary">
                     <div class="form-group">
                         <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control" placeholder="Ingrese usuario..."></asp:TextBox>
+                        <asp:Label ID="LbError" runat="server" ForeColor="Red" Font-Bold="true" Visible="false" Text="Usuario inexistente o contraseña incorrecta" />
                     </div>
                     <div class="form-group">
                         <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Ingrese password..."></asp:TextBox>

@@ -22,36 +22,36 @@ namespace Negocio
         {
            
 
-            conn.lector = conn.Select( 
+            conn.Lector = conn.Select( 
                     String.Format("select * from ticket where ticketid={0}",id)
                     );
 
             
 
-            while (conn.lector.Read())
+            while (conn.Lector.Read())
             {
                 ticket = new Ticket();
 
-                ticket.ticketid = (uint)conn.lector.GetInt32(0);
-                ticket.clase = conn.lector.GetString(1);
-                ticket.descripcion = conn.lector.GetString(4);
+                ticket.ticketid = (uint)conn.Lector.GetInt32(0);
+                ticket.clase = conn.Lector.GetString(1);
+                ticket.descripcion = conn.Lector.GetString(4);
             }
             //string col1Value = rdr["ColumnOneName"].ToString();
-            //aux.Ticket.clase = conn.lector.GetInt32(0);
+            //aux.Ticket.clase = conn.Lector.GetInt32(0);
 
 
             // try
             // {
-            //     aux.codArticulo = lector.GetString(1);
+            //     aux.codArticulo = Lector.GetString(1);
             // }
             // catch (Exception)
             // { aux.codArticulo = "Sin codigo"; }
 
-            // aux.Nombre = lector.GetString(2);
+            // aux.Nombre = Lector.GetString(2);
 
             // try
             // {
-            //     aux.Descripcion = lector.GetString(3);
+            //     aux.Descripcion = Lector.GetString(3);
             // }
             // catch { aux.Descripcion = "Sin descripcion"; }
 
@@ -60,13 +60,13 @@ namespace Negocio
 
             // aux.marca = new Marca();
             // aux.categoria = new Categoria();
-            // aux.marca.ID = lector.GetInt32(4);
-            // aux.categoria.ID = lector.GetInt32(5);
+            // aux.marca.ID = Lector.GetInt32(4);
+            // aux.categoria.ID = Lector.GetInt32(5);
 
-            // aux.marca.Descripcion = lector.GetString(6);
-            // aux.categoria.Descripcion = lector.GetString(7);
+            // aux.marca.Descripcion = Lector.GetString(6);
+            // aux.categoria.Descripcion = Lector.GetString(7);
 
-            // aux.Precio = (float)lector.GetDecimal(8);
+            // aux.Precio = (float)Lector.GetDecimal(8);
 
         }
         int CrearIncidente()
