@@ -36,13 +36,19 @@ namespace SistemaDeTickets
             {
                 if (Session["user"].ToString() != null)
                 {
-                    Response.Redirect("DashBoard.aspx");
+                    
+                    //Response.Redirect("DashBoard.aspx");
                 }
                 else
                 {
                     Response.Redirect("Login.aspx");
                 }
             }
+        }
+
+        protected void btxRegistrar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Registro.aspx");
         }
     }
 }

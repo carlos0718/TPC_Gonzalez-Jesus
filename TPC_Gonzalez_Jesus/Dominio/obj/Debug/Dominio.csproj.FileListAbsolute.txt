@@ -16,3 +16,9 @@ C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb

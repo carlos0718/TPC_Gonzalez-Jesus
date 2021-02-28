@@ -20,8 +20,8 @@ namespace Negocio
 
         public ConexionBase()
         {
-
-            rutaConexionLocal = "MATIASLENOVO\\SQLEXPRESS";     // Ruta local unificada para conexion al SQL Server
+            rutaConexionLocal = "DESKTOP-FDLLM2V\\SQLEXPRESS";
+            //rutaConexionLocal = "MATIASLENOVO\\SQLEXPRESS";     // Ruta local unificada para conexion al SQL Server
             nombreBase = "TPC_GONZALEZ_JESUS";
             rutaBaseDatos = "data source = " + rutaConexionLocal + "; initial catalog = " + nombreBase + "; integrated security = sspi";
             //rutaBaseDatos = "data source = MATIASLENOVO\\SQLEXPRESS; initial catalog = CATALOGO_DB; integrated security = sspi" 
@@ -56,6 +56,15 @@ namespace Negocio
         {
             lector.Close();
             conexion.Close();
+        }
+
+        public SqlDataReader ExecuteSP(string name,string parameters)
+        {
+            comando.CommandText = "exec "+name+parameters;
+            //"INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio,imagenurl) " + "VALUES('" + nuevo.codArticulo + "','" +
+            //nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.marca.ID + ", " + nuevo.categoria.ID + ", '" + nuevo.Precio + "','" + nuevo.Imagen + "')"; 
+            conexion.Open();
+            return comando.ExecuteReader(); //Devuelve cantidad de filas afectadas
         }
 
     }

@@ -25,3 +25,12 @@ C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.csproj.CopyComplete
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.dll
 C:\Users\MatiasGonzalez\Desktop\TPC Final\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\bin\Debug\Negocio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\bin\Debug\Negocio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\bin\Debug\Dominio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\bin\Debug\Dominio.pdb
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.csprojAssemblyReference.cache
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.csproj.CoreCompileInputs.cache
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.csproj.CopyComplete
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.dll
+C:\Users\Matias\Desktop\Tp final prog 3\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Negocio\obj\Debug\Negocio.pdb

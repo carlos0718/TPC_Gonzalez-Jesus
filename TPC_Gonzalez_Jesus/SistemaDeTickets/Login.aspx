@@ -15,12 +15,17 @@
                         <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control" placeholder="Ingrese usuario..."></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="TxtPass" runat="server" CssClass="form-control" placeholder="Ingrese password..."></asp:TextBox>
+                        <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Ingrese password..."></asp:TextBox>
                     </div>
                     <div class="card-footer" style="text-align:center">
                         <asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptar_Click" />
                         <a ></a>
                     </div>
+                    
+                     <div class="card-header" style="text-align:center"> Si no tenes usuario, registrate </div>
+                        <div class="card-footer" style="text-align:center">
+                        <asp:Button ID="btxRegistrar" runat="server" Text="Registrar" OnClick="btxRegistrar_Click" />
+                        <a ></a>
                 </div>
             </div>
              
