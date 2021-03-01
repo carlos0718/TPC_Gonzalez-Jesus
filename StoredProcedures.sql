@@ -56,7 +56,6 @@ drop procedure sd_loguearUsuario end
 
 go
 
-
 create procedure sd_loguearUsuario (
 		@dni int,
 		@password varchar(64)
@@ -80,14 +79,14 @@ exec sd_loguearUsuario 37189215,'prog2021'
 
 
 	/* ============									 CREAR INCIDENTE										     ============ */
-begin if (OBJECT_ID(N'sp_crearIncidenteNuevo') is not null) 
-drop procedure sp_crearIncidenteNuevo end
+begin if (OBJECT_ID(N'sp_crearTicketNuevo') is not null) 
+drop procedure sp_crearTicketNuevo end
 
 go
 
 /* Procedimiento de Almacenado para crear incidentes */ 
-CREATE PROCEDURE sp_crearIncidenteNuevo(
-	@descripcion varchar(300),	@detalle varchar ( 3000),	@urgencia tinyint ,	@clasificacionid tinyint,	
+CREATE PROCEDURE sp_crearTicketNuevo(
+	@clase varchar(20),@descripcion varchar(300),	@detalle varchar ( 3000),	@urgencia tinyint ,	@clasificacionid tinyint,	
 	@creadopor int,	 @reportadopor int
 )
 
@@ -96,7 +95,7 @@ begin
 	declare @succes bit=0
 	begin try
 		insert into [TICKET] (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor,reportadopor) 
-		VALUES	('INCIDENTE', @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor,@reportadopor)
+		VALUES	( @clase, @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor,@reportadopor)
 
 		set @succes = case when @@rowcount =0 then 0 else 1 end 
 
@@ -104,6 +103,8 @@ begin
 
 		insert into [tkhistory] (ticketid,estado)
 		values (@ticketid,'NUEVO')
+
+
 	end try
 	begin catch
 		set @succes=0
@@ -117,7 +118,7 @@ begin
 	begin
 		-- select 'Error' as Mensaje -- Definir mensaje de error
 		RAISERROR('Error grave al generar nuevo ticket',16,1)
-		select 0 as [return]
+		select 0 as ticketid
 	end
 
 end
@@ -144,6 +145,7 @@ begin
 	end catch
 end
 
+ 
 	/* ============									 ASIGNAR PROPIETARIO TICKET				 ============ */
 begin if (OBJECT_ID(N'sp_asignarPropietarioTicket') is not null) 
 drop procedure sp_avanzarEstadoTicket end
@@ -163,6 +165,31 @@ begin
 			update ticket set propietario = @nuevopropietario where ticketid = @ticketid
 			insert into tkhistory (ticketid,estado,propietario) values (@ticketid, (select estado from ticket where ticketid=@ticketid) ,@nuevopropietario)
 		end
+	end try
+	begin catch
+		--loggear error
+	end catch
+end
+
+
+
+	/* ============									 ASIGNAR PERSONA A GRUPO				 ============ */
+begin if (OBJECT_ID(N'sp_asignarPersonaAGrupo') is not null) 
+drop procedure sp_asignarPersonaAGrupo end
+
+go
+
+CREATE PROCEDURE sp_asignarPersonaAGrupo(
+	@dni int, @AREA varchar (20)
+)
+AS
+begin
+	begin try
+		if (exists (select 1 from GRUPOTRABAJO where dni=@dni and Area=@area ) ) 
+			select -1 as return_code , 'El usuario ya se encuentra cargado en esa area' as mensaje
+		else
+			insert into GRUPOTRABAJO (dni,area) values (@dni,@area)
+		
 	end try
 	begin catch
 		--loggear error

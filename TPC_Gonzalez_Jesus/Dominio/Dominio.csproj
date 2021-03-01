@@ -42,13 +42,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activo.cs" />
-    <Compile Include="Areas.cs" />
     <Compile Include="BaseDatos.cs" />
     <Compile Include="Clasificacion.cs" />
+    <Compile Include="Dominios.cs" />
     <Compile Include="Estado.cs" />
     <Compile Include="InfoContacto.cs" />
     <Compile Include="Persona.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro.cs" />
     <Compile Include="Ticket.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,8 +8,9 @@ namespace Dominio
 {
     public class Clasificacion
     {
-        ushort clasificacionid;
-        string clasificacion;
-        string rubro;
+        public ushort Clasificacionid { get; set; }
+        public string Clase { get; set; }
+        public string Rubro { get; set; }
+        public string Nombre { get; set; }
     }
 }

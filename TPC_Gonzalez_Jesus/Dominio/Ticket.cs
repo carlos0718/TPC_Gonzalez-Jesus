@@ -23,21 +23,29 @@ namespace Dominio
 		//uint ticketuid;
 		public uint ticketid { get; set; }
 		public string clase { get; set; }
-		public List<string> ClasesTicket { get; }
 		
 		public DateTime fecha_creacion { get; set; }
 		public DateTime fecha_fin { get; set; }
 		public string descripcion { get; set; }
-		string estado;
 		public string Estado { get; set; }
-		string detalle;
+		public string detalle { get; set; }
 		public byte Urgencia { get; set; }
 		public byte clasificacionid { get; set; }
+		public string Clasificacion_str { get; set; }
 		public bool Historico { get; set; }
+
+		public uint Reportadopor { get; set; }
+		public string Reportadopor_str{ get; set; }
+		public uint Propietario { get; set; }
+		public string Propietario_str { get; set; }
+		public uint Grupo_propietario { get; set; }
+		public string Grupo_Propietario_str { get; set; }
+
 		public List<byte> Urgencias { get; }
 
 		public List<string> EstadosIncidente { get; }
 
+		public List<string> ClasesTicket { get; }
 
 		public Ticket()
         {
