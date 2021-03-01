@@ -5,6 +5,8 @@
 	/* ============									 PROCEDIMIENTOS ALMACENADOS											     ============ */
 	/* ============																											 ============ */
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
+use master
+go
 
 use TPC_GONZALEZ_JESUS
 go
@@ -40,13 +42,11 @@ begin
 		select  @dni as code,'Se cargo ok el DNI: '+cast(@DNI as varchar(10) ) as  [message]
 	end try
 	begin catch
-		select ERROR_MESSAGE()
+		select ERROR_MESSAGE() as Error
 	end catch
 end
 
 
-exec sp_crearUsuarioNuevo 37189215,'Matias','Gonzalez','1993-05-16',0, 'prog2021'
-select * from persona
 
 
 	/* ============									 Loguear usuario										     ============ */
@@ -70,12 +70,10 @@ begin
 			select 0 as [return]
 	end try
 	begin catch
-		select ERROR_MESSAGE()
+		select ERROR_MESSAGE() as Error
 	end catch
 end
 
-
-exec sd_loguearUsuario 37189215,'prog2021'
 
 
 	/* ============									 CREAR INCIDENTE										     ============ */
@@ -137,18 +135,22 @@ CREATE PROCEDURE sp_avanzarEstadoTicket(
 AS
 begin
 	begin try
-		update ticket set estado = @nuevoestado where ticketid = @ticketid
+		if (@nuevoestado='RESUELTO' or @nuevoestado='CANCELADO')
+			update ticket set estado = @nuevoestado,historico=1,fecha_fin=current_timestamp where ticketid = @ticketid
+		else
+			update ticket set estado = @nuevoestado where ticketid = @ticketid
 		insert into tkhistory (ticketid,estado) values (@ticketid,@nuevoestado)
 	end try
 	begin catch
-		--loggear error
+		
+		select ERROR_MESSAGE() as Error
 	end catch
 end
 
  
-	/* ============									 ASIGNAR PROPIETARIO TICKET				 ============ */
+	/* ============									 ASIGNAR PROPIETARIO A TICKET				 ============ */
 begin if (OBJECT_ID(N'sp_asignarPropietarioTicket') is not null) 
-drop procedure sp_avanzarEstadoTicket end
+drop procedure sp_asignarPropietarioTicket end
 
 go
 
@@ -162,12 +164,13 @@ begin
 		if @nuevopropietario=null 
 			update ticket set grupo_propietario = @nuevogrupopropietario where ticketid = @ticketid
 		else begin
-			update ticket set propietario = @nuevopropietario where ticketid = @ticketid
+			update ticket set propietario = @nuevopropietario,grupo_propietario=@nuevogrupopropietario where ticketid = @ticketid
 			insert into tkhistory (ticketid,estado,propietario) values (@ticketid, (select estado from ticket where ticketid=@ticketid) ,@nuevopropietario)
 		end
 	end try
 	begin catch
-		--loggear error
+		
+		select ERROR_MESSAGE() as Error
 	end catch
 end
 
@@ -192,6 +195,33 @@ begin
 		
 	end try
 	begin catch
-		--loggear error
+		
+		select ERROR_MESSAGE() as Error
 	end catch
 end
+
+
+
+-- ===================================================================	
+
+	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
+	/* ============																											 ============ */
+	/* ============									 		 TRIGGERS	             										 ============ */
+	/* ============																											 ============ */
+	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
+
+CREATE TRIGGER trg_CheckHistorico   
+ON ticket FOR UPDATE
+AS 
+begin
+	if ( (select historico from deleted) = 1 ) begin
+	
+		select 'Error, el ticket ya se encuentra cerrado!' as code
+		ROLLBACK TRANSACTION
+		return
+	end
+end
+ go 
+
+enable trigger trg_CheckHistorico on ticket
+go

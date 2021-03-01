@@ -22,7 +22,7 @@ namespace Negocio
         {
             string sentencia = "select dominioid,tipo_dominio,valor_texto,valor_entero " +
                    "from DOMINIOS " +
-                    "where tipo_dominio=" +_tipo);
+                    "where tipo_dominio=" +_tipo;
 
 
 
