@@ -258,15 +258,22 @@ insert into CLASIFICACION (clase,rubro,nombre) values ('INCIDENTE','Falla Hardwa
 														('INCIDENTE','Falla Hardware','Fuente alimentacion'),
 														('INCIDENTE','Falla Software','Virus/malware'),
 														('INCIDENTE','Falla Software','Activacion de windows'),
-														  
+														('INCIDENTE','Falla Software','Outlook no recibe mensajes'),
+
+
 														('SOLICITUD','Nuevo componente','UPS'),
 														('SOLICITUD','Nuevo componente','Nuevo equipo entero'),
 														('SOLICITUD','Cambio de equipo','Monitor Nuevo'),
 														('SOLICITUD','Software','Instalacion de cliente FTP'),
+														('SOLICITUD','Software','Instalacion de Adobe Reader'),
+														('SOLICITUD','Cambio de equipo','Cambio de de placa Mather'),
 
 														--Los problemas se consideran incidentes ajenos a la empresa, pero que afectan a nuestros clientes o arreglos
 														('PROBLEMA','Servidor','Proveedor caido'),
-														('PROBLEMA','Apagado intermitente','Central electrica defectuosa')
+														('PROBLEMA','Apagado intermitente','Central electrica defectuosa'),
+														('PROBLEMA','Red Inestable','Proveedor de internet con problemas'),
+														('PROBLEMA','Impresoras','Impresoras sin cartuchos'),
+														('PROBLEMA','Laptos','Proveedor con demora')
 	
 	
 
