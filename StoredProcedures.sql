@@ -46,7 +46,7 @@ begin
 	end catch
 end
 
-
+go
 
 
 	/* ============									 Loguear usuario										     ============ */
@@ -73,7 +73,7 @@ begin
 		select ERROR_MESSAGE() as Error
 	end catch
 end
-
+go
 
 
 	/* ============									 CREAR INCIDENTE										     ============ */
@@ -120,18 +120,17 @@ begin
 	end
 
 end
-
+go
 
 	/* ============									 AVANZAR ESTADO TICKET				 ============ */
-begin if (OBJECT_ID(N'sp_avanzarEstadoTicket') is not null) 
-drop procedure sp_avanzarEstadoTicket end
+--begin if (OBJECT_ID(N'sp_avanzarEstadoTicket') is not null) 
+--drop procedure sp_avanzarEstadoTicket end
 
-go
+--go
 
 CREATE PROCEDURE sp_avanzarEstadoTicket(
 	@ticketid int, @usuario int , @nuevoestado varchar(20)
 )
-
 AS
 begin
 	begin try
@@ -146,7 +145,7 @@ begin
 		select ERROR_MESSAGE() as Error
 	end catch
 end
-
+go
  
 	/* ============									 ASIGNAR PROPIETARIO A TICKET				 ============ */
 begin if (OBJECT_ID(N'sp_asignarPropietarioTicket') is not null) 
@@ -200,7 +199,7 @@ begin
 	end catch
 end
 
-
+go
 
 -- ===================================================================	
 
