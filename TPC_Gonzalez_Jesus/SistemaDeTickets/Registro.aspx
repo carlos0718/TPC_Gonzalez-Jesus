@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
-<body>
+<body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:center; margin-top:30px">
     <form id="form1" runat="server">
 
 

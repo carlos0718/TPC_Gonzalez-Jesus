@@ -7,6 +7,12 @@
 .body-content{
     margin:0px;
 }
+.body-registro {
+    text-align: center;
+    background-color: darkcyan;
+    font-family: Courier New, Courier, monospace;
+}
+}
 .buttons {
     text-align: right;
     border-radius: 10px;
@@ -36,6 +42,7 @@ section div ul il {
 }
 .d-flex{
     margin:0px;
+    padding-left:5px;
 }
 #sidebar-container{
     min-height:100vh;
@@ -47,3 +54,4 @@ section div ul il {
 #sidebar-container .menu {
     width: 18em;
 }
+

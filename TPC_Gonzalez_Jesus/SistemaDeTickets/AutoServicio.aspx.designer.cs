@@ -105,6 +105,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label lbl_clasifif;
 
         /// <summary>
+        /// Control ddl_urgencia.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddl_urgencia;
+
+        /// <summary>
         /// Control txtb_Descripcion_value.
         /// </summary>
         /// <remarks>
@@ -130,15 +139,6 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_CrearIncidente;
-
-        /// <summary>
-        /// Control ddl_urgencia.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_urgencia;
 
         /// <summary>
         /// Control dg_Tickets.

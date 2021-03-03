@@ -135,7 +135,7 @@ AS
 begin
 	begin try
 		if (@nuevoestado='RESUELTO' or @nuevoestado='CANCELADO')
-			update ticket set estado = @nuevoestado,historico=1,fecha_fin=current_timestamp where ticketid = @ticketid
+			update ticket set estado = @nuevoestado,historico = 1,fecha_fin=current_timestamp where ticketid = @ticketid
 		else
 			update ticket set estado = @nuevoestado where ticketid = @ticketid
 		insert into tkhistory (ticketid,estado) values (@ticketid,@nuevoestado)
