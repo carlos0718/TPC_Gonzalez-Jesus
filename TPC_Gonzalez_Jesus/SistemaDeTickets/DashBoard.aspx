@@ -12,13 +12,12 @@
                     <a href="#" runat="server" ID="a_DashBoard" onserverclick="a_DashBoard_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-apps mr-2 lead"></i>Dashboard </a>
                     <a href="#" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-clipboard mr-2 lead"></i>My Tickect's </a>
                     <a href="#" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-alert mr-2 lead" ></i>Unassigned tkt</a>
-                    <a href="#" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-alert mr-2 lead" ></i>Logout</a></a>
-
-
+                    <a href="#" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-alert mr-2 lead" ></i>Logout</a>
                 </div>
             </div>
-            <div ID="div_TicketGrid" style="width:100%; font-family:Courier New, Courier, monospace;  margin:35px">
-               <h3 style="text-align:center;"><strong> Mis Tickets</strong></h3>
+         
+            <div ID="div_TicketGrid" style="width:100%; font-family:Courier New, Courier, monospace;  margin:15px 45px; padding-left:15px">
+               <h3 style="text-align:center; background-color:aliceblue; height:2cm; padding-top:18px"><strong> Mis Tickets</strong></h3>
                
             <%--    <table ID="dg_Tickets">
                     <tbody>
@@ -43,7 +42,7 @@
                 </table> --%>
                <asp:DataGrid runat="server" ID="dg_Tickets"
                     PageSize="10" AllowPaging="True" DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4"
-                    ForeColor="White" GridLines="Both" OnItemCommand="dg_Tickets_ItemCommand">
+                    ForeColor="black" GridLines="Both" OnItemCommand="dg_Tickets_ItemCommand" BorderColor="white">
                     <Columns>
                         <asp:BoundColumn HeaderText="Ticket" DataField="ticketid" />
                         <asp:BoundColumn HeaderText="Clase" DataField="clase" />
@@ -57,12 +56,9 @@
                     </Columns>
                 </asp:DataGrid>
               </div>
-
+      </section>
              <br />
-             <table>
-
-             </table>
-            <div ID="div_RegistrosGrid">
+         <%--        <div ID="div_RegistrosGrid"> ESTO SERIA LO QUE ESTÁ DIBUJADO EN EL DEFAULT.ASPX?
                 <br />Registros
                 <asp:DataGrid runat="server" ID="dg_Registros"
                     PageSize="10" AllowPaging="True" DataKeyField="registroid" AutoGenerateColumns="False" CellPadding="4"
@@ -72,12 +68,11 @@
                         <asp:BoundColumn HeaderText="Detalle" DataField="Detalle" />
                         <asp:BoundColumn HeaderText="Fecha_creacion" DataField="Fecha_creacion" DataFormatString="{0:dd/MM/yyyy}" />
                         <asp:BoundColumn HeaderText="Creado por" DataField="Creadopor" />
-
-
                     </Columns>
                 </asp:DataGrid>
-              </div>
-         </section>
+             </div>--%>
+
+
   
 
     </form>
