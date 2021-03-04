@@ -9,29 +9,43 @@
 </head>
 <body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:center; margin-top:30px">
     <form id="form1" runat="server">
-
-
+     <div style="background-color:aliceblue; height:2.5cm">
+         <h1 style="text-align:center; color:black; padding-top:25px"><strong>Formulario de carga de datos</strong></h1>
+     </div>
+        
+    <fieldset style="margin: 2% 20% ; border-color:cornsilk; padding:4%">
         <div runat="server" visible="true" id="div_Inicial">
                 <div>
-                    
-                    <asp:Label ID="lbl_ClienteEmpleado" Text="Es cliente o empleado?" runat="server"   />
-                <asp:DropDownList ID="ddl_ClienteEmpleado" runat="server"  AutoPostBack="true"   OnSelectedIndexChanged="ddl_ClienteEmpleado_SelectedIndexChanged" >
-                     <asp:ListItem selected hidden>Elegir</asp:ListItem>
-                     <asp:ListItem>Empleado</asp:ListItem>
+                    <asp:Label ID="lbl_ClienteEmpleado" Text=" Es cliente o empleado" Font-Bold="true" ForeColor="White" Font-Size="17px"  runat="server" /><br />
+                    <asp:DropDownList ID="ddl_ClienteEmpleado" runat="server" Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
+                        AutoPostBack="true"   OnSelectedIndexChanged="ddl_ClienteEmpleado_SelectedIndexChanged" >
+                     <asp:ListItem Selected hidden>Elegir</asp:ListItem>
+                     <asp:ListItem  >Empleado</asp:ListItem>
                      <asp:ListItem>Cliente</asp:ListItem>
                 </asp:DropDownList>
             </div>
-                Formulario de carga de datos
                 <br />
 <%--                Ingresa tu documento y luego presiona buscar    
                 <br />--%>
-                <asp:TextBox runat="server" ID="txtb_DNI" TextMode="Number" placeholder="Ingrese DNI..." />
+                
+                <div>
+                    <asp:TextBox runat="server" ID="txtb_DNI" TextMode="Number" Width="7cm" Font-Size="15px"  Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese DNI..." /><br />
+                </div><br />
                 <%--<asp:Button runat="server" ID="btn_BuscarDNI" Text="Buscar" OnClick="btn_BuscarDNI_Click" />--%>
-                <asp:TextBox runat="server" ID="txtb_Nombre"  placeholder="Ingrese Nombre" />
-                <asp:TextBox runat="server" ID="txtb_Apellido"  placeholder="Ingrese Apellido" />
+               <div>
+                    <asp:TextBox runat="server" ID="txtb_Nombre"  Width="7cm" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese Nombre" />
+               </div><br />
+                <div>
+                    <asp:TextBox runat="server" ID="txtb_Apellido"  Width="7cm" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese Apellido" />
+                </div>
                 <br />
-
-                <asp:TextBox runat="server" ID="txtb_Date" TextMode="Date" />
+                <div>
+                    <asp:TextBox runat="server" ID="txtb_Date" Width="7cm" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" TextMode="Date" />
+                </div>
 
               <%--  <asp:DropDownList ID="ddl_Ano" runat="server"  AutoPostBack="false"   >
                     <asp:ListItem selected hidden>Año</asp:ListItem>
@@ -45,14 +59,23 @@
                     <asp:ListItem selected hidden>Dia</asp:ListItem>
                      <asp:ListItem>16</asp:ListItem>
                 </asp:DropDownList>--%>
+                <br />
+        <asp:Label runat="server" ID="lbl_esCliente" Text="Es Cliente?: " /> <%--esta linea quitar--%>
+        <asp:CheckBox runat="server" ID="cb_EsCliente" Checked="false" /> <%--esta linea quitar--%>
         <br />
-        <asp:Label runat="server" ID="lbl_esCliente" Text="Es Cliente?: " />
-        <asp:CheckBox runat="server" ID="cb_EsCliente" Checked="false" />
-        <br />
-        <asp:TextBox runat="server" ID="txtb_Password" placeholder="Ingrese contraseña" TextMode="Password"/>
-        <asp:TextBox runat="server" ID="txtb_PassWordConfirm" placeholder="Confirme contraseña" TextMode="Password"/>
-
-        <asp:Button runat="server" ID="btn_Confirmar" Text="Enviar" OnClick="btn_Confirmar_Click" />
+                <div>
+                    <asp:TextBox runat="server" ID="txtb_Password"  Width="7cm" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese contraseña" TextMode="Password"/>
+                </div><br />
+                <div>
+                    <asp:TextBox runat="server" ID="txtb_PassWordConfirm"  Width="7cm" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="7px" BorderColor="white" placeholder="Confirme contraseña" TextMode="Password"/>
+                </div><br />
+                <div>
+                    <asp:Button runat="server" ID="btn_Confirmar" Font-Size="15px" Font-Italic="true"
+                        BorderWidth="2px" BorderColor="white" Text="Enviar" OnClick="btn_Confirmar_Click" />
+                </div>
+                
 
         </div>
         <div id="div_final" runat="server" visible="false">
@@ -60,6 +83,7 @@
             <asp:Button runat="server" Text="Continuar" />
 
         </div>
+    </fieldset>
     </form>
 </body>
 </html>
