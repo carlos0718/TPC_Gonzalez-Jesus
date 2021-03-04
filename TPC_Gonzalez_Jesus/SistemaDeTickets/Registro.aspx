@@ -7,7 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
-<body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:center; margin-top:30px">
+<body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:center;">
     <form id="form1" runat="server">
      <div style="background-color:aliceblue; height:2.5cm">
          <h1 style="text-align:center; color:black; padding-top:25px"><strong>Formulario de carga de datos</strong></h1>
