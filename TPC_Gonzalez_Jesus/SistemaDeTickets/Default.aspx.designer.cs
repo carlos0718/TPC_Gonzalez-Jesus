@@ -249,6 +249,51 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_Detalle;
 
         /// <summary>
+        /// Control div_CargaRegistros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_CargaRegistros;
+
+        /// <summary>
+        /// Control lbl_Reg_Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Reg_Descripcion;
+
+        /// <summary>
+        /// Control txtb_Reg_Descripcion.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtb_Reg_Descripcion;
+
+        /// <summary>
+        /// Control lbl_Reg_Detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lbl_Reg_Detalle;
+
+        /// <summary>
+        /// Control txtb_Reg_Detalle.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtb_Reg_Detalle;
+
+        /// <summary>
         /// Control dg_Registros.
         /// </summary>
         /// <remarks>

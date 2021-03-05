@@ -15,17 +15,10 @@ namespace SistemaDeTickets
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!Page.IsPostBack)
-                MostrarDashBoardTicketsPropios();
+                MostrarDashBoardTicketsPropios(0);
                 
         }
 
-
-
-        
-        protected void a_DashBoard_ServerClick(object sender, EventArgs e)
-        {
-
-        }
 
         protected void dg_Tickets_ItemCommand(object source, DataGridCommandEventArgs e)
         {
@@ -39,14 +32,36 @@ namespace SistemaDeTickets
                 //dg_Registros.DataBind();
             }
         }
-
-        void MostrarDashBoardTicketsPropios()
+        protected void a_DashBoard_ServerClick(object sender, EventArgs e)
+        {
+            MostrarDashBoardTicketsPropios(0);
+        }
+        protected void a_DashBoardTodos_ServerClick(object sender, EventArgs e)
+        {
+            MostrarDashBoardTicketsPropios(1);
+        }
+        void MostrarDashBoardTicketsPropios(byte incluye_historico)
         {
             TicketNegocio tk = new TicketNegocio();
 
-            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorPropietario(37189215), null);
+            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorPropietario(37189215,incluye_historico), null);
 
             dg_Tickets.DataBind();
+        }
+        protected void a_Logout_ServerClick(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
+        }
+
+        protected void a_DashBoardSinPropietario_ServerClick(object sender, EventArgs e)
+        {
+            TicketNegocio tk = new TicketNegocio();
+
+            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTicketsSinPropietario(0), null);
+
+            dg_Tickets.DataBind();
+            
         }
     }
 }

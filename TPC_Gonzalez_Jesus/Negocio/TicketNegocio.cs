@@ -120,11 +120,12 @@ namespace Negocio
         }
 
 
-        public BindingList<Ticket> ObtenerTablaPorPropietario(int _propietario) // 0 reportadopor - 1 propietario 
+        public BindingList<Ticket> ObtenerTablaPorPropietario(int _propietario,byte _incluye_historico) // 0 reportadopor - 1 propietario 
         {
 
-            string sentencia = "select ticketid,descripcion,estado,urgencia,fecha_creacion,grupo_propietario,reportadopor," +
-                "(select nombre from clasificacion where clasificacionid = tk.clasificacionid),clase from ticket tk where historico=0 and propietario=" + _propietario.ToString();
+            string sentencia = String.Format("select ticketid,descripcion,estado,urgencia,fecha_creacion,grupo_propietario,reportadopor," +
+                "(select nombre from clasificacion where clasificacionid = tk.clasificacionid),clase from ticket tk" +
+                " where historico={0} and propietario={1}" ,_incluye_historico, _propietario.ToString());
 
             conn.Lector = conn.Select(sentencia);
             BindingList<Ticket> lista = new BindingList<Ticket>();
@@ -164,6 +165,112 @@ namespace Negocio
 
         }
 
+        public bool ActualizarDescTicket(Ticket tk)
+        {
+            string sentencia = String.Format("update ticket set descripcion='{0}' , detalle='{1}' where ticketid={2}", tk.descripcion, tk.detalle,tk.ticketid);
+
+            try
+            {
+                conn.InsertUpdateDel(sentencia);
+
+                conn.Cerrar();
+                return true;
+            }
+            catch
+            {
+                conn.Cerrar();
+                return false;
+            }
+
+        }
+
+        public bool AvanzarEstadoTicket(Ticket tk, string estado)
+        {
+            string parametros = String.Format("{0} , {1} , '{2}'", tk.ticketid, tk.Propietario, estado);
+
+            try
+            {
+                conn.ExecuteSP("sp_avanzarEstadoTicket ", parametros);
+                conn.Cerrar();
+                return true;
+            }catch
+            {
+                conn.Cerrar();
+                return false;
+            }
+            
+
+
+
+        }
+
+        public bool AsignarPropietario(Ticket tk, int  nuevo_propietario ,int nuevo_grupopropietario)
+        {
+            string parametros = String.Format("{0} , {1} , '{2}'", tk.ticketid, nuevo_propietario, nuevo_grupopropietario);
+
+            
+            try
+            {
+                conn.ExecuteSP("sp_asignarPropietarioTicket ", parametros);
+                conn.Cerrar();
+                return true;
+            }
+            catch
+            {
+                conn.Cerrar();
+                return false;
+            }
+
+
+
+
+        }
+
+        public BindingList<Ticket> ObtenerTicketsSinPropietario(int grupo_propietario) 
+        {
+
+            string sentencia = String.Format("select ticketid,descripcion,estado,urgencia,fecha_creacion,grupo_propietario,reportadopor," +
+                "(select nombre from clasificacion where clasificacionid = tk.clasificacionid),clase from ticket tk" +
+                " where historico=0 and propietario is null or estado='NUEVO'");
+
+            conn.Lector = conn.Select(sentencia);
+            BindingList<Ticket> lista = new BindingList<Ticket>();
+            Ticket aux;
+
+            while (conn.Lector.Read())
+            {
+                aux = new Ticket();
+
+                aux.ticketid = (uint)conn.Lector.GetInt32(0);
+                aux.descripcion = conn.Lector.GetString(1);
+                aux.Estado = conn.Lector.GetString(2);
+                aux.Urgencia = conn.Lector.GetByte(3);
+                aux.fecha_creacion = conn.Lector.GetDateTime(4);
+                try
+                {
+                    aux.Grupo_propietario = (uint)conn.Lector.GetInt32(5);
+                }
+                catch
+                {
+                    aux.Grupo_propietario = 0;
+                }
+
+                try
+                {
+                    aux.Reportadopor = (uint)conn.Lector.GetInt32(6);
+                }
+                catch
+                { }
+
+                aux.Clasificacion_str = conn.Lector.GetString(7);
+                aux.clase = conn.Lector.GetString(8);
+
+                lista.Add(aux);
+            }
+
+            return lista;
+
+        }
     }
 
 
