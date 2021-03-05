@@ -39,6 +39,7 @@ namespace Negocio
             conexion.Open();
             Lector = comando.ExecuteReader();
 
+
             return Lector;
             //while (Lector.Read())
         }

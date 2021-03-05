@@ -21,55 +21,45 @@ namespace Negocio
             conn = new ConexionBase();
         }
 
-        public void ObtenerTicket(int id)
+        public Ticket ObtenerTicket(int id)
         {
 
+            string sentencia = String.Format("select ticketid,clase,descripcion,detalle,reportadopor,creadopor,propietario,grupo_propietario," +
+                                               "fecha_creacion,fecha_fin,urgencia,historico,estado" +
+                                                   " from ticket where ticketid={0}", id);
+            conn.Lector = conn.Select(sentencia);
 
-            conn.Lector = conn.Select(
-                    String.Format("select * from ticket where ticketid={0}", id)
-                    );
-
-
+            Ticket aux = new Ticket();
+            aux.ticketid = 0;
 
             while (conn.Lector.Read())
             {
-                ticket = new Ticket();
-
-                ticket.ticketid = (uint)conn.Lector.GetInt32(0);
-                ticket.clase = conn.Lector.GetString(1);
-                ticket.descripcion = conn.Lector.GetString(4);
+                aux.ticketid = (uint)conn.Lector.GetInt32(0);
+                aux.clase = conn.Lector.GetString(1);
+                aux.descripcion = conn.Lector.GetString(2);
+                aux.detalle = conn.Lector.GetString(3);
+                aux.Reportadopor = (uint)conn.Lector.GetInt32(4);
+                aux.Creadopor = (uint)conn.Lector.GetInt32(5);
+                if (!conn.Lector.IsDBNull(6))
+                    aux.Propietario = (uint)conn.Lector.GetInt32(6);
+                else
+                    aux.Propietario = 0;
+                if (!conn.Lector.IsDBNull(7))
+                    aux.Grupo_propietario = (uint)conn.Lector.GetByte(7);
+                else
+                    aux.Grupo_propietario = 0;
+                aux.fecha_creacion = conn.Lector.GetDateTime(8);
+                if (!conn.Lector.IsDBNull(9))
+                    aux.fecha_fin = conn.Lector.GetDateTime(9);
+                else
+                    aux.fecha_fin = DateTime.MinValue;
+                aux.Urgencia = conn.Lector.GetByte(10);
+                aux.Historico = conn.Lector.GetBoolean(11);
+                aux.Estado= conn.Lector.GetString(12);
             }
-            //string col1Value = rdr["ColumnOneName"].ToString();
-            //aux.Ticket.clase = conn.Lector.GetInt32(0);
-
-
-            // try
-            // {
-            //     aux.codArticulo = Lector.GetString(1);
-            // }
-            // catch (Exception)
-            // { aux.codArticulo = "Sin codigo"; }
-
-            // aux.Nombre = Lector.GetString(2);
-
-            // try
-            // {
-            //     aux.Descripcion = Lector.GetString(3);
-            // }
-            // catch { aux.Descripcion = "Sin descripcion"; }
-
-
-
-
-            // aux.marca = new Marca();
-            // aux.categoria = new Categoria();
-            // aux.marca.ID = Lector.GetInt32(4);
-            // aux.categoria.ID = Lector.GetInt32(5);
-
-            // aux.marca.Descripcion = Lector.GetString(6);
-            // aux.categoria.Descripcion = Lector.GetString(7);
-
-            // aux.Precio = (float)Lector.GetDecimal(8);
+   
+            conn.Cerrar();
+            return aux;
 
         }
         int CrearIncidente()
@@ -134,7 +124,7 @@ namespace Negocio
         {
 
             string sentencia = "select ticketid,descripcion,estado,urgencia,fecha_creacion,grupo_propietario,reportadopor," +
-                "(select nombre from clasificacion where clasificacionid = tk.clasificacionid),clase from ticket tk where historico=0 and reportadopor=" + _propietario.ToString();
+                "(select nombre from clasificacion where clasificacionid = tk.clasificacionid),clase from ticket tk where historico=0 and propietario=" + _propietario.ToString();
 
             conn.Lector = conn.Select(sentencia);
             BindingList<Ticket> lista = new BindingList<Ticket>();

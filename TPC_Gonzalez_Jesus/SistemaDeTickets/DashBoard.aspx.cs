@@ -7,7 +7,6 @@ using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
 using Dominio;
-using Negocio;
 
 namespace SistemaDeTickets
 {
@@ -34,6 +33,7 @@ namespace SistemaDeTickets
         {
             if (e.CommandName.ToString() == "btn_TkGrid_Reg")
             {
+                Response.Redirect("Default.aspx?ticketid=" + e.Item.Cells[0].Text);  // envia el numero de ticket
                 //Response.Write(e.Item.Cells[0].Text);
                 //RegistroNegocio negocio = new RegistroNegocio();
                 //dg_Registros.DataSource = new BindingSource(negocio.ObtenerRegistrosTicket( Int32.Parse(e.Item.Cells[0].Text) ), null);

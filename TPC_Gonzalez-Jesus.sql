@@ -131,7 +131,7 @@ create table TICKET (
 	--constraint Chk_urgencia check (urgencia in (1,2,3,4,5))
 	)
 
-	select ticketid,descripcion,estado,urgencia,fecha_creacion,fecha_fin,historico from ticket where propietario=37189215
+	
 	
 	/* ============   ============   ============ */
 	-- Tabla de clasificaciones para asignar la naturaleza de un ticket o el tipo de un Activo

@@ -33,7 +33,8 @@ namespace Dominio
 		public byte clasificacionid { get; set; }
 		public string Clasificacion_str { get; set; }
 		public bool Historico { get; set; }
-
+		public uint Creadopor { get; set; }
+		public string Creadopor_str { get; set; }
 		public uint Reportadopor { get; set; }
 		public string Reportadopor_str{ get; set; }
 		public uint Propietario { get; set; }

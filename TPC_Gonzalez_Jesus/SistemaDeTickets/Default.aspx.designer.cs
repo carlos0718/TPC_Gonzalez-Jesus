@@ -24,6 +24,24 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.HtmlControls.HtmlForm form;
 
         /// <summary>
+        /// Control txtb_Buscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtb_Buscar;
+
+        /// <summary>
+        /// Control btn_Buscar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Buscar;
+
+        /// <summary>
         /// Control btnUpdate.
         /// </summary>
         /// <remarks>
@@ -78,13 +96,13 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label LblTktID;
 
         /// <summary>
-        /// Control TxtID.
+        /// Control txtb_Ticketid.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtID;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Ticketid;
 
         /// <summary>
         /// Control LblAffectedUser.
@@ -132,49 +150,49 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label LblStatus;
 
         /// <summary>
-        /// Control DdlStatus.
+        /// Control txtb_Esatdo.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlStatus;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Esatdo;
 
         /// <summary>
-        /// Control LblAssigned.
+        /// Control lbl_Propietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAssigned;
+        protected global::System.Web.UI.WebControls.Label lbl_Propietario;
 
         /// <summary>
-        /// Control DdlAssigned.
+        /// Control txtb_Propietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlAssigned;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Propietario;
 
         /// <summary>
-        /// Control LblAssignedGroup.
+        /// Control lbl_GrupoPropietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAssignedGroup;
+        protected global::System.Web.UI.WebControls.Label lbl_GrupoPropietario;
 
         /// <summary>
-        /// Control DdlAssignedGroup.
+        /// Control txtb_GrupoPropietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DdlAssignedGroup;
+        protected global::System.Web.UI.WebControls.TextBox txtb_GrupoPropietario;
 
         /// <summary>
         /// Control LblCase.
@@ -186,30 +204,30 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label LblCase;
 
         /// <summary>
-        /// Control TxtCase.
+        /// Control txtb_Descripcion.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCase;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Descripcion;
 
         /// <summary>
-        /// Control LblDescripton.
+        /// Control lbl_Detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblDescripton;
+        protected global::System.Web.UI.WebControls.Label lbl_Detalle;
 
         /// <summary>
-        /// Control TextBox1.
+        /// Control txtb_Detalle.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TextBox1;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Detalle;
     }
 }
