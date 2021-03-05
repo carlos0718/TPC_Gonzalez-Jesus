@@ -20,11 +20,11 @@ namespace SistemaDeTickets
         {
             if (Page.IsPostBack)
                 return;
-            tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
-            PoblarDatosTicket(tk);
-            EstablecerPermisos();
+            //tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
+            //PoblarDatosTicket(tk);
+            //EstablecerPermisos();
 
-            PoblarRegistros();
+            //PoblarRegistros();
 
 
         }
