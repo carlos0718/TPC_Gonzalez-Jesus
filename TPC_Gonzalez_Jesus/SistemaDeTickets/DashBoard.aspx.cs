@@ -14,7 +14,9 @@ namespace SistemaDeTickets
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (!Page.IsPostBack)
+                MostrarDashBoardTicketsPropios();
+                
         }
 
 
@@ -22,11 +24,7 @@ namespace SistemaDeTickets
         
         protected void a_DashBoard_ServerClick(object sender, EventArgs e)
         {
-            TicketNegocio tk = new TicketNegocio();
 
-            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorPropietario(37189215), null);
-
-            dg_Tickets.DataBind();
         }
 
         protected void dg_Tickets_ItemCommand(object source, DataGridCommandEventArgs e)
@@ -40,6 +38,15 @@ namespace SistemaDeTickets
 
                 //dg_Registros.DataBind();
             }
+        }
+
+        void MostrarDashBoardTicketsPropios()
+        {
+            TicketNegocio tk = new TicketNegocio();
+
+            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorPropietario(37189215), null);
+
+            dg_Tickets.DataBind();
         }
     }
 }

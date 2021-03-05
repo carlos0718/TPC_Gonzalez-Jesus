@@ -36,7 +36,7 @@ exec sp_asignarPersonaAGrupo 22458963,'TECNICO'
 insert into DOMINIOS (tipo_dominio,valor_texto) values   ('TIPO TICKET','INCIDENTE'),('TIPO TICKET','SOLICITUD'),('TIPO TICKET','ORDEN DE TRABAJO'),
 														('ESTADO ACTIVO','OPERATIVO'),('ESTADO ACTIVO','BAJA')
 
-insert into DOMINIOS (tipo_dominio,valor_texto,valor_entero) values  
+insert into DOMINIOS (tipo_dominio,	,valor_entero) values  
 													('AREA','TECNICO',3),('AREA','ADMINISTRATIVO',2),('AREA','CLIENTE',1),('AREA','SUPERVISOR',4),
 													('ESTADO','NUEVO',0),('ESTADO','EN COLA',1),('ESTADO','EN PROGRESO',2),('ESTADO','RESUELTO',3),('ESTADO','CANCELADO',3)
 
@@ -102,6 +102,8 @@ exec sp_crearTicketNuevo 'INCIDENTE' , 'Agregar impresora a pc' , ' Se necesita 
  -- REGISTROS
 
 insert into REGISTRO (clase,creadopor,descripcion,detalle,ticketid) values
+
+				('INCIDENTE',37189215,'Contacto telefonico', 'Se contacta al cliente para corroborar el prolema',7),
 				('INCIDENTE',37189215,'Contacto telefonico', 'Se contacta al cliente para corroborar el prolema',2),
 				('INCIDENTE',37189215,'Visita', 'Acercamiento al equipo. Se verifica el problema. Queda pendiente pedido de repuesto',2),
 				('INCIDENTE',37189215,'Contacto telefonico', 'Se contacta al cliente para corroborar el prolema',5),
@@ -156,3 +158,5 @@ select * from tkhistory
 
 select * from GRUPOTRABAJO
 
+
+select ticketid,clase,descripcion,detalle,reportadopor,creadopor,propietario,grupo_propietario,fecha_creacion,fecha_fin,urgencia,historico from ticket where ticketid=6

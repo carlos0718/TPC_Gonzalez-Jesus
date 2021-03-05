@@ -42,49 +42,67 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Button btn_Buscar;
 
         /// <summary>
-        /// Control btnUpdate.
+        /// Control lbl_EsPropietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnUpdate;
+        protected global::System.Web.UI.WebControls.Label lbl_EsPropietario;
 
         /// <summary>
-        /// Control btnResolved.
+        /// Control chkb_EsPropietario.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnResolved;
+        protected global::System.Web.UI.WebControls.CheckBox chkb_EsPropietario;
 
         /// <summary>
-        /// Control btnClose.
+        /// Control btn_Guardar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnClose;
+        protected global::System.Web.UI.WebControls.Button btn_Guardar;
 
         /// <summary>
-        /// Control btnCancel.
+        /// Control btn_Resolver.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnCancel;
+        protected global::System.Web.UI.WebControls.Button btn_Resolver;
 
         /// <summary>
-        /// Control btnOpen.
+        /// Control btn_Cancelar.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnOpen;
+        protected global::System.Web.UI.WebControls.Button btn_Cancelar;
+
+        /// <summary>
+        /// Control btn_TomarPropiedad.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_TomarPropiedad;
+
+        /// <summary>
+        /// Control btn_Derivar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Derivar;
 
         /// <summary>
         /// Control LblTktID.
@@ -105,22 +123,22 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_Ticketid;
 
         /// <summary>
-        /// Control LblAffectedUser.
+        /// Control lbl_ReportadoPor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label LblAffectedUser;
+        protected global::System.Web.UI.WebControls.Label lbl_ReportadoPor;
 
         /// <summary>
-        /// Control TxtAffectedUser.
+        /// Control txtb_ReportadoPor.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtAffectedUser;
+        protected global::System.Web.UI.WebControls.TextBox txtb_ReportadoPor;
 
         /// <summary>
         /// Control LblCreator.
@@ -132,13 +150,13 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label LblCreator;
 
         /// <summary>
-        /// Control TxtCreator.
+        /// Control txtb_Creador.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox TxtCreator;
+        protected global::System.Web.UI.WebControls.TextBox txtb_Creador;
 
         /// <summary>
         /// Control LblStatus.
@@ -229,5 +247,14 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtb_Detalle;
+
+        /// <summary>
+        /// Control dg_Registros.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DataGrid dg_Registros;
     }
 }

@@ -11,6 +11,8 @@ namespace Negocio
     {
         public Dominios dominios { get; set; }
 
+        public List<Dominios> lista_dominios { get; }
+
         ConexionBase conn;
         public DominiosNegocio()
         {
@@ -46,7 +48,41 @@ namespace Negocio
 
 
         }
+        public void ObtenerAreaPorNombre(string _nombre)
+        {
+                string sentencia = String.Format("select dominioid,tipo_dominio,valor_texto,valor_entero " +
+               "from DOMINIOS " +
+                "where tipo_dominio='AREA' and valor_texto='{0}'", _nombre);
 
+            conn.Lector = conn.Select(sentencia);
+            dominios = new Dominios();
+
+            while (conn.Lector.Read())
+            {
+                dominios.Dominiosid = conn.Lector.GetInt32(0);
+                dominios.Tipo_dominio = conn.Lector.GetString(1);
+                dominios.Valor_texto = conn.Lector.GetString(2);
+                dominios.Valor_enter = conn.Lector.GetInt32(3);
+            }
+        }
+
+        public void ObtenerAreaPorIdArea(int _valor_entero)
+        {
+            string sentencia = String.Format("select dominioid,tipo_dominio,valor_texto,valor_entero " +
+           "from DOMINIOS " +
+            "where tipo_dominio='AREA' and valor_entero={0}", _valor_entero);
+
+            conn.Lector = conn.Select(sentencia);
+            dominios = new Dominios();
+
+            while (conn.Lector.Read())
+            {
+                dominios.Dominiosid = (int)conn.Lector.GetInt16(0);
+                dominios.Tipo_dominio = conn.Lector.GetString(1);
+                dominios.Valor_texto = conn.Lector.GetString(2);
+                dominios.Valor_enter = conn.Lector.GetInt32(3);
+            }
+        }
 
     }
 }
