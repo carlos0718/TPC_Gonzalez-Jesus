@@ -4,24 +4,18 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
 using Negocio;
+
 namespace SistemaDeTickets
 {
-    public partial class AutoServicio : System.Web.UI.Page
+    public partial class NuevoTicket : System.Web.UI.Page
     {
-
         List<Dominio.Clasificacion> clasificaciones;
         protected void Page_Load(object sender, EventArgs e)
         {
-
             TicketNegocio tk = new TicketNegocio();
 
             lbl_user_value.Text = Session["nombre"] + " " + Session["apellido"];
-
-            dg_Tickets.DataSource =  new BindingSource( tk.ObtenerTablaPorReportado(Int32.Parse(Session["dni"].ToString())) , null)   ;
-
-            dg_Tickets.DataBind();
 
         }
 
@@ -34,7 +28,7 @@ namespace SistemaDeTickets
 
             foreach (Dominio.Clasificacion clas in clasificaciones)
             {
-                textoClasif.Add(clas.Rubro+" - " + clas.Nombre);
+                textoClasif.Add(clas.Rubro + " - " + clas.Nombre);
             }
 
 
@@ -42,7 +36,7 @@ namespace SistemaDeTickets
             ddl_clasif.DataTextField = "Nombre";
             ddl_clasif.DataValueField = "Clasificacionid";
 
-            
+
 
             lbl_clasifif.Visible = true;
 
@@ -58,7 +52,7 @@ namespace SistemaDeTickets
 
             //lbl_clasifif.Text = ddl_clasif.SelectedIndex.ToString();
             lbl_clasifif.Text = aux.Rubro;
-            
+
         }
 
         protected void btn_CrearIncidente_Click(object sender, EventArgs e)
@@ -77,7 +71,7 @@ namespace SistemaDeTickets
             int clasificacionid = aux.Clasificacionid;
 
             var algo = Session;
-            uint creadorpor = UInt32.Parse( (string)Session["dni"] );
+            uint creadorpor = UInt32.Parse((string)Session["dni"]);
             uint reportadorpor = UInt32.Parse((string)Session["dni"]);
 
 

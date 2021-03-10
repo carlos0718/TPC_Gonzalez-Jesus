@@ -44,9 +44,6 @@ create table PERSONA (
 	cliente bit default 0
 	)
 
-SELECT * FROM persona
-
-INSERT INTO PERSONA (apellido,nombre,fecha_nacimiento,fecha_alta,DNI,alta,activo,cliente) VALUES ('Chavez','Jorge','')
 	
 		/* ============   ============   ============ */
 if OBJECT_ID('[Password]') is not null
@@ -97,6 +94,20 @@ create table GRUPOTRABAJO (
 	area varchar(300) not null --foreign key references AREAS(areasID)    TECNICO','ADMINISTRATIVO','CLIENTE','SUPERVISOR'
 )
 
+	/* ============   ============   ============ */
+	-- Tabla de clasificaciones para asignar la naturaleza de un ticket o el tipo de un Activo
+if OBJECT_ID('CLASIFICACION') is not null
+drop table CLASIFICACION
+go
+
+create table CLASIFICACION(
+	clasificacionid int identity(1,1) primary key,
+	clase varchar(20) not null, /* Define para que tipo de ticket aplica, o en su defecto si es de activos */
+	rubro varchar(20) not null,  /* Define el rubro interno, finanzas, administrativo, RRHH, etc */
+	nombre varchar(120) not null
+
+	--constraint Chk_clase_clasif check (clase in ('INCIDENTE','SOLICITUD','PROBLEMA','OT','ACTIVO'))	
+	)
 
 	/* ============   ============   ============ */
 
@@ -119,9 +130,9 @@ create table TICKET (
 	estado varchar(20) not null default 'NUEVO',
 	detalle varchar ( 3000),
 	urgencia tinyint not null default 5,
-	clasificacionid tinyint not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
+	clasificacionid int not null foreign key REFERENCES CLASIFICACION(clasificacionid), -- TINYINT -> INT (FK)
 	historico bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
-	creadopor int not null, --foreign key references PERSONA(DNI),
+	creadopor int not null foreign key references PERSONA(DNI),
 	reportadopor int not null,
 	propietario int ,--foreign key references PERSONA(DNI),
 	grupo_propietario tinyint default 2  --foreign key references AREAS(areasid),
@@ -131,20 +142,6 @@ create table TICKET (
 	)
 	
 	
-	/* ============   ============   ============ */
-	-- Tabla de clasificaciones para asignar la naturaleza de un ticket o el tipo de un Activo
-if OBJECT_ID('CLASIFICACION') is not null
-drop table CLASIFICACION
-go
-
-create table CLASIFICACION(
-	clasificacionid int identity(1,1) primary key,
-	clase varchar(20) not null, /* Define para que tipo de ticket aplica, o en su defecto si es de activos */
-	rubro varchar(20) not null,  /* Define el rubro interno, finanzas, administrativo, RRHH, etc */
-	nombre varchar(120) not null
-
-	--constraint Chk_clase_clasif check (clase in ('INCIDENTE','SOLICITUD','PROBLEMA','OT','ACTIVO'))	
-	)
 
 
 	
@@ -152,11 +149,10 @@ create table CLASIFICACION(
 	/* ============   ============   ============ */
 
 	-- Historial de estado de los tickets
-drop table tkhistory
-go
+
 create table tkhistory(
 	tkhistory int identity(1,1) primary key,
-	ticketid int not null,
+	ticketid int foreign key references TICKET(ticketid),
 	estado varchar(20) not null,
 	fecha datetime not null default CURRENT_TIMESTAMP,
 	propietario int --not null foreign key REFERENCES PERSONA(DNI)
@@ -165,17 +161,17 @@ create table tkhistory(
 	/* ============   ============   ============ */
 	/* INVENTARIO */
 
-create table ACTIVOS (  /* INVENTARIO */
-	activosid int identity(1,1) primary key,
-	nombre varchar(50) not null,
-	descripcion varchar(300),
-	estado varchar(20) not null default 'INACTIVO',
-	clasificacionid int not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
-	/*valor money not null default 0,    TENTATIVA: valor en inventario */ 
-	costo money not null default 0	/* Costo de cara a la venta del cliente */
-)
-	/* ============   ============   ============ */
-	-- Tabla de registros de trabajo sobre un ticket para dejar notas
+--create table ACTIVOS (  /* INVENTARIO */
+--	activosid int identity(1,1) primary key,
+--	nombre varchar(50) not null,
+--	descripcion varchar(300),
+--	estado varchar(20) not null default 'INACTIVO',
+--	clasificacionid int not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
+--	/*valor money not null default 0,    TENTATIVA: valor en inventario */ 
+--	costo money not null default 0	/* Costo de cara a la venta del cliente */
+--)
+--	/* ============   ============   ============ */
+--	-- Tabla de registros de trabajo sobre un ticket para dejar notas
 
 create table REGISTRO(
 	registroid int identity(1,1) primary key,
@@ -217,7 +213,7 @@ create table ESTADOS(
 
 
 /*================================================*/
-select * from ticket
+
 	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
 	/* ============																											 ============ */
 	/* ============									 		 VISTAS	             										     ============ */
@@ -253,62 +249,23 @@ select tk.ticketid,tk.clase,tk.ticket_padre,tk.fecha_creacion,tk.fecha_fin,tk.es
 											inner join persona pe2 on tk.reportadopor=pe2.DNI
 											inner join dominios dom on dom.tipo_dominio='AREA' and tk.grupo_propietario=dom.valor_entero
 
-											select * from ticket_detalle
-
-											ticketid int identity(1,1) primary key,		/* identificador para cada ticket de su propia clase */
-
-	ticket_padre int ,
-	--clase varchar(20) not null foreign key REFERENCES CLASETICKET(claseticketid),
-	clase varchar(20) not null ,
-	fecha_creacion date default CURRENT_TIMESTAMP,
-	fecha_fin date,
-	descripcion varchar(300) not null,
-	estado varchar(20) not null default 'NUEVO',
-	detalle varchar ( 3000),
-	urgencia tinyint not null default 5,
-	clasificacionid tinyint not null, --foreign key REFERENCES CLASIFICACION(clasificacionid),
-	historico bit not null default 0,    /* Define si el ticket esta en el historial, es decir cerrado */
-	creadopor int not null, --foreign key references PERSONA(DNI),
-	reportadopor int not null,
-	propietario int ,--foreign key references PERSONA(DNI),
-	grupo_propietario tinyint --foreign key references AREAS(areasid),
-
 
 -- 1.- TRAE LA VISTA DE CANTIDAD DE CLASE=INCIDENTES GENERADOS
-ALTER VIEW CantidadTks AS
+CREATE VIEW CantidadTks AS
 SELECT COUNT(*)[Cantidad de Inc.] FROM TICKET T  WHERE T.clase = 'INCIDENTE'
 
-SELECT * FROM CantidadTks
+
 --2.- TRAE LA VISTA DE TODOS LOS TKT CON ESTADO = NUEVO
 CREATE VIEW VIEW_ESTADO AS
-SELECT T.ticketid ,T.clase,T.descripcion,T.detalle,T.estado,T.urgencia,T.clasificacionid,T.creadopor, T.propietario,T.grupopropietario FROM TICKET T
+SELECT T.ticketid ,T.clase,T.descripcion,T.detalle,T.estado,T.urgencia,T.clasificacionid,T.creadopor, T.propietario,T.grupo_propietario FROM TICKET T
 WHERE T.estado = 'NUEVO'
 
-SELECT * FROM VIEW_ESTADO
+
 --3.- TRAE LA VISTA DE LA CANTIDAD DE CLASE=SOLICITUDES GENERADOS
 CREATE VIEW CantidadSoli AS
 SELECT COUNT(*) [Cantidad de Solicitudes] FROM TICKET T WHERE T.clase = 'SOLICITUD'
 
-SELECT * FROM CantidadSoli
+
 
 
 -- ===================================================================	
-
-	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
-	/* ============																											 ============ */
-	/* ============									 		 TRIGGERS	             										 ============ */
-	/* ============																											 ============ */
-	/* ============   ============   ============  ============   ============   ============  ============   ============   ============ */
-
-
-<<<<<<< HEAD
-															 
-=======
-
-	select ticketid,descripcion,estado,urgencia,fecha_creacion,grupo_propietario,reportadopor,clasificacionid,(select nombre from clasificacion where clasificacionid = tk.clasificacionid) 
-	from ticket tk where historico=0 and reportadopor=37189215
-
-	select * from clasificacion
-
-	update ticket set clasificacionid=3 where clasificacionid=1
->>>>>>> c23eef27de0a5b455faf2248797144ca72ac2564

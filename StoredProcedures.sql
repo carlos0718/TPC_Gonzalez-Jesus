@@ -93,7 +93,7 @@ begin
 	declare @succes bit=0
 	begin try
 		insert into [TICKET] (clase,descripcion,detalle,estado,urgencia,clasificacionid,creadopor,reportadopor) 
-		VALUES	( @clase, @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor,@reportadopor)
+		VALUES	( @clase, @descripcion,@detalle,'NUEVO',@urgencia,@clasificacionid,@creadopor,@reportadopor),
 
 		set @succes = case when @@rowcount =0 then 0 else 1 end 
 
