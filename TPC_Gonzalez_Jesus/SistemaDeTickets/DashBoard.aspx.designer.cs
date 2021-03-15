@@ -33,6 +33,33 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.HtmlControls.HtmlAnchor a_DashBoard;
 
         /// <summary>
+        /// Control a_DashBoardTodos.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_DashBoardTodos;
+
+        /// <summary>
+        /// Control a_DashBoardSinPropietario.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_DashBoardSinPropietario;
+
+        /// <summary>
+        /// Control a_Logout.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlAnchor a_Logout;
+
+        /// <summary>
         /// Control dg_Tickets.
         /// </summary>
         /// <remarks>

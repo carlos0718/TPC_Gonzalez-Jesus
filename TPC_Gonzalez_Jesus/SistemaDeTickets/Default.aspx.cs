@@ -20,11 +20,13 @@ namespace SistemaDeTickets
         {
             if (Page.IsPostBack)
                 return;
-            //tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
-            //PoblarDatosTicket(tk);
-            //EstablecerPermisos();
+            tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
 
-            //PoblarRegistros();
+            Session["ticketid"] = tk.ticketid;
+            PoblarDatosTicket(tk);
+            EstablecerPermisos();
+
+            PoblarRegistros();
 
 
         }
@@ -46,12 +48,14 @@ namespace SistemaDeTickets
         protected void btn_Buscar_Click(object sender, EventArgs e)
         {
             tk = negocio.ObtenerTicket(Int32.Parse(txtb_Buscar.Text));
+           
             if (tk.ticketid == 0)
             {
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket no existe!');", true);
                 return;
             }
-           PoblarDatosTicket(tk);
+            Session["ticketid"] = tk.ticketid;
+            PoblarDatosTicket(tk);
             EstablecerPermisos();
             PoblarRegistros();
         }
@@ -105,7 +109,8 @@ namespace SistemaDeTickets
             chkb_EsPropietario.Enabled = false;
 
             if (es_propietario)
-            { 
+            {
+                div_CargaRegistros.Visible = true;
 
                 txtb_Descripcion.Enabled = true;
                 txtb_Detalle.Enabled = true;
@@ -119,6 +124,8 @@ namespace SistemaDeTickets
             }
             else
             {
+                div_CargaRegistros.Visible = false;
+
                 btn_TomarPropiedad.Visible = true;
                 txtb_Descripcion.Enabled = false;
                 txtb_Detalle.Enabled = false;
@@ -132,5 +139,56 @@ namespace SistemaDeTickets
             }
         }
 
+        protected void btn_Guardar_Click(object sender, EventArgs e)
+        {
+            tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
+            tk.descripcion = txtb_Descripcion.Text;
+            tk.detalle = txtb_Detalle.Text;
+
+            if (negocio.ActualizarDescTicket(tk))
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket se actualizo correctamente');", true);
+            else
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket no se pudo actualizar');", true);
+        }
+
+        void ActualizarEstado(string estado)
+        {
+            tk = negocio.ObtenerTicket(Int32.Parse(Session["ticketid"].ToString() ));
+            if (negocio.AvanzarEstadoTicket(tk, estado))
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket se actualizo correctamente');", true);
+            else
+                ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket no se pudo actualizar');", true);
+        }
+
+        protected void btn_Cancelar_Click(object sender, EventArgs e)
+        {
+            ActualizarEstado("CANCELADO");
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btn_Resolver_Click(object sender, EventArgs e)
+        {
+
+            ActualizarEstado("RESUELTO");
+            Response.Redirect(Request.RawUrl);
+        }
+
+        protected void btn_TomarPropiedad_Click(object sender, EventArgs e)
+        {
+            tk = negocio.ObtenerTicket(Int32.Parse(Session["ticketid"].ToString() ));
+            negocio.AsignarPropietario(tk, Int32.Parse(Session["dni"].ToString()), 2);
+
+            Response.Redirect(Request.RawUrl);
+
+        }
+
+        protected void Unnamed_Click(object sender, EventArgs e)
+        {
+            tk = negocio.ObtenerTicket(Int32.Parse(Session["ticketid"].ToString()));
+            
+
+            
+            Response.Redirect(Request.RawUrl);
+        }
     }
 }

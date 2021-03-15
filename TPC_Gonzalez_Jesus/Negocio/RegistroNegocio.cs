@@ -47,5 +47,10 @@ namespace Negocio
 
 
         }
+        public void InsertarRegistro(Ticket tk,string descripcion,string detalle)
+        {
+            //string sentencia = String.Format("insert into registro '")
+            //    ('INCIDENTE', 37189215, 'Contacto telefonico', 'Se contacta al cliente para corroborar el prolema', 7)
+        }
     }
 }

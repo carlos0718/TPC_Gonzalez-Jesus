@@ -36,7 +36,7 @@ exec sp_asignarPersonaAGrupo 22458963,'TECNICO'
 insert into DOMINIOS (tipo_dominio,valor_texto) values   ('TIPO TICKET','INCIDENTE'),('TIPO TICKET','SOLICITUD'),('TIPO TICKET','ORDEN DE TRABAJO'),
 														('ESTADO ACTIVO','OPERATIVO'),('ESTADO ACTIVO','BAJA')
 
-insert into DOMINIOS (tipo_dominio,	,valor_entero) values  
+insert into DOMINIOS (tipo_dominio,valor_texto,	valor_entero) values  
 													('AREA','TECNICO',3),('AREA','ADMINISTRATIVO',2),('AREA','CLIENTE',1),('AREA','SUPERVISOR',4),
 													('ESTADO','NUEVO',0),('ESTADO','EN COLA',1),('ESTADO','EN PROGRESO',2),('ESTADO','RESUELTO',3),('ESTADO','CANCELADO',3)
 
@@ -140,7 +140,7 @@ exec sp_avanzarEstadoTicket 4,95346499,'RESUELTO'
 
 select * from persona
 
-select * from ticket
+select * from ticket tk inner join clasificacion cls on tk.clasificacionid=cls.clasificacionid 
 
 select * from grupos
 
@@ -152,11 +152,12 @@ select * from dominios
 
 select * from CLASIFICACION
 
-select * from registro
+select * from registro 
 
 select * from tkhistory
 
 select * from GRUPOTRABAJO
 
 
-select ticketid,clase,descripcion,detalle,reportadopor,creadopor,propietario,grupo_propietario,fecha_creacion,fecha_fin,urgencia,historico from ticket where ticketid=6
+
+

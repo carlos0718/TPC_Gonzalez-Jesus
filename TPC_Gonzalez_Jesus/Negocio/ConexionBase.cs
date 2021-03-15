@@ -70,7 +70,7 @@ namespace Negocio
             //"INSERT INTO ARTICULOS(Codigo, Nombre, Descripcion, IdMarca, IdCategoria, Precio,imagenurl) " + "VALUES('" + nuevo.codArticulo + "','" +
             //nuevo.Nombre + "', '" + nuevo.Descripcion + "', " + nuevo.marca.ID + ", " + nuevo.categoria.ID + ", '" + nuevo.Precio + "','" + nuevo.Imagen + "')"; 
             conexion.Open();
-            return comando.ExecuteReader(); //Devuelve cantidad de filas afectadas
+            return comando.ExecuteReader(); 
         }
 
     }
