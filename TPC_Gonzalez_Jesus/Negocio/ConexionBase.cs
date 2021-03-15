@@ -20,8 +20,8 @@ namespace Negocio
 
         public ConexionBase()
         {
-            rutaConexionLocal = "DESKTOP-FDLLM2V\\SQLEXPRESS";
-            //rutaConexionLocal = "CAJS0718";     // Ruta local unificada para conexion al SQL Server
+            //rutaConexionLocal = "DESKTOP-FDLLM2V\\SQLEXPRESS";
+            rutaConexionLocal = "CAJS0718";     // Ruta local unificada para conexion al SQL Server
             nombreBase = "TPC_GONZALEZ_JESUS";
             rutaBaseDatos = "data source = " + rutaConexionLocal + "; initial catalog = " + nombreBase + "; integrated security = sspi";
             //rutaBaseDatos = "data source = MATIASLENOVO\\SQLEXPRESS; initial catalog = CATALOGO_DB; integrated security = sspi" 
