@@ -21,6 +21,7 @@
             <asp:Label runat="server" ID="lbl_miembrodesde_value"  />
         </div>
         <div style="margin-bottom:20px">
+            <asp:Label ID="lblError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="El ticket no pudo ser cargado. Contacte al administrador." />
             <asp:Label runat="server" ID="lbl_cargaTicket" Font-Size="17px" Font-Bold="true" Text="Tipo: "/>
             <asp:DropDownList runat="server" ID="ddl_Clase"  Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
                 AutoPostBack="true" OnSelectedIndexChanged="ddl_Clase_SelectedIndexChanged">
@@ -28,23 +29,28 @@
                      <asp:ListItem>INCIDENTE</asp:ListItem>
                      <asp:ListItem>SOLICITUD</asp:ListItem>
             </asp:DropDownList>
+            <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="ddl_Clase" InitialValue="-----" runat="server" ForeColor="Red" />
+
 
            <div style="padding-top: 20px">
                 <asp:Label runat="server" ID="lbl_clasif" Font-Size="17px" Font-Bold="true" Text="Motivo : "/>
                 <asp:DropDownList runat="server" ID="ddl_clasif" AutoPostBack="true" Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
                     AppendDataBoundItems="true" OnSelectedIndexChanged="ddl_clasif_SelectedIndexChanged" />
+                <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="ddl_clasif"  runat="server" ForeColor="Red" />
                 <asp:Label runat="server" ID="lbl_clasifif" Text="Rubro"  Visible="false"/>
            </div>
+
            <div style="padding-top:20px">
                <asp:Label runat="server"  Font-Size="17px" Font-Bold="true" Text="Urgencia: "/>
                 <asp:DropDownList runat="server" ID="ddl_urgencia"  Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true">
-                <asp:ListItem selected hidden>-----</asp:ListItem>
+    
                      <asp:ListItem>1 - Critica</asp:ListItem>
                      <asp:ListItem>2 - Grave</asp:ListItem>
                      <asp:ListItem>3 - Moderada</asp:ListItem>
                      <asp:ListItem>4 - Normal</asp:ListItem>
-                     <asp:ListItem>5 - Baja</asp:ListItem>
+                     <asp:ListItem selected>5 - Baja</asp:ListItem>
             </asp:DropDownList>
+               
            </div>
            <br />
            <div>

@@ -16,19 +16,19 @@
                 <div style="border-color:black" class="card-body" >
                     <div class="form-group">
                         <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control" placeholder="Ingrese usuario..."></asp:TextBox>
-                        <asp:Label ID="LbError" runat="server" ForeColor="black" Font-Bold="true" Visible="false" Text="Usuario inexistente o contraseña incorrecta" />
+                        <asp:Label ID="LbError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="Usuario inexistente o contraseña incorrecta" />
                     </div>
                     <div class="form-group">
                         <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Ingrese password..."></asp:TextBox>
                     </div>
                     <div style="text-align: center; margin-bottom: 10px">
-                        <%--<asp:Button ID="BtnAceptar" runat="server" Text="Aceptar" OnClick="BtnAceptar_Click" />--%>
-                        <button id="BtnAceptar" class="btn btn-primary" onclick="BtnAceptar_Click"><strong>Aceptar</strong></button>
+                        <asp:Button ID="BtnAceptar" class="btn btn-primary" runat="server" Text="Aceptar" OnClick="BtnAceptar_Click" />
+                        <%--<button id="BtnAceptar" class="btn btn-primary" onclick="BtnAceptar_Click"><strong>Aceptar</strong></button>--%>
                     </div>
                     <div class="card-header" style="text-align: center; font-size: 11px; color: black"><strong>Si no tenés usuario, registrate</strong> </div>
                     <div style="text-align: center; margin-top: 10px">
-                        <%--<asp:Button ID="btxRegistrar" runat="server" Text="Registrar" OnClick="btxRegistrar_Click" />--%>
-                        <button style="font-size: 13px" id="btxRegistrar" class="btn btn-primary" onclick="BtnAceptar_Click"><strong>Registrar</strong></button>
+                        <asp:Button ID="btxRegistrar" class="btn btn-primary" runat="server" Text="Registrar" OnClick="btxRegistrar_Click" />
+                        <%--<button style="font-size: 13px" id="btxRegistrar" class="btn btn-primary" onclick="btxRegistrar_Click"><strong>Registrar</strong></button>--%>
                     </div>
                 </div>
             </div>

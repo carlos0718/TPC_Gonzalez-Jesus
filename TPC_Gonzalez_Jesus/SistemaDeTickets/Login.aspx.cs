@@ -13,23 +13,24 @@ namespace SistemaDeTickets
         {
             //Session["user"] = TxtUsuer.ToString();
 
-            //if(Page.IsPostBack)
-            //{
-            //    if(Session["user"].ToString() == null)
-            //    {
-            //        Response.Redirect("Login.aspx");
-            //    }
-            //    else
-            //    {
-            //        Response.Redirect("Default.aspx");
-            //    }
-            //}
+            if (Page.IsPostBack)
+            {
+                if (Session["user"] == null)
+                {
+                    return;
+                   // Response.Redirect("Login.aspx");
+                }
+                else
+                {
+                    Response.Redirect("Default.aspx");
+                }
+            }
         }
 
         protected void BtnAceptar_Click(object sender, EventArgs e)
         {
             //Response.Redirect("Default.aspx");
-
+            
             if (String.IsNullOrEmpty(TxtUsuer.Text))
                 return;
 
@@ -37,7 +38,7 @@ namespace SistemaDeTickets
             PersonaNegocio per = new PersonaNegocio();
 
             code = per.LogInPersona(Int32.Parse(TxtUsuer.Text), TxtPass.Text);
-
+            
 
             if (code == 0)
             {

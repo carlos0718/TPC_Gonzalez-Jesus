@@ -33,24 +33,6 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_Inicial;
 
         /// <summary>
-        /// Control lbl_ClienteEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lbl_ClienteEmpleado;
-
-        /// <summary>
-        /// Control ddl_ClienteEmpleado.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList ddl_ClienteEmpleado;
-
-        /// <summary>
         /// Control txtb_DNI.
         /// </summary>
         /// <remarks>
@@ -123,6 +105,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_PassWordConfirm;
 
         /// <summary>
+        /// Control LbError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label LbError;
+
+        /// <summary>
         /// Control btn_Confirmar.
         /// </summary>
         /// <remarks>
@@ -148,5 +139,14 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_returnInfo;
+
+        /// <summary>
+        /// Control btn_VolverInicio.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_VolverInicio;
     }
 }

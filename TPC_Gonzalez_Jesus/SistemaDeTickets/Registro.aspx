@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="SistemaDeTickets.Registro" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="SistemaDeTickets.Registro"  EnableViewState="true" %>
 
 <!DOCTYPE html>
 
@@ -15,7 +15,7 @@
         
     <fieldset style="margin: 2% 20% ; border-color:cornsilk; padding:4%">
         <div runat="server" visible="true" id="div_Inicial">
-                <div>
+               <%-- <div>
                     <asp:Label ID="lbl_ClienteEmpleado" Text=" Es cliente o empleado" Font-Bold="true" ForeColor="White" Font-Size="17px"  runat="server" /><br />
                     <asp:DropDownList ID="ddl_ClienteEmpleado" runat="server" Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
                         AutoPostBack="true"   OnSelectedIndexChanged="ddl_ClienteEmpleado_SelectedIndexChanged" >
@@ -23,7 +23,7 @@
                      <asp:ListItem  >Empleado</asp:ListItem>
                      <asp:ListItem>Cliente</asp:ListItem>
                 </asp:DropDownList>
-            </div>
+            </div>--%>
                 <br />
 <%--                Ingresa tu documento y luego presiona buscar    
                 <br />--%>
@@ -71,6 +71,7 @@
                     <asp:TextBox runat="server" ID="txtb_PassWordConfirm"  Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" placeholder="Confirme contraseña" TextMode="Password"/>
                 </div><br />
+            <asp:Label ID="LbError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="Ups! Las contraseas no coinciden." />
                 <div>
                     <asp:Button runat="server" ID="btn_Confirmar" Font-Size="15px" Font-Italic="true"
                         BorderWidth="2px" BorderColor="white" Text="Enviar" OnClick="btn_Confirmar_Click" />
@@ -80,7 +81,7 @@
         </div>
         <div id="div_final" runat="server" visible="false">
         <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
-            <asp:Button runat="server" Text="Continuar" />
+            <asp:Button ID="btn_VolverInicio" runat="server" Text="Volver al inicio." OnClick="btn_VolverInicio_Click"/>
 
         </div>
     </fieldset>

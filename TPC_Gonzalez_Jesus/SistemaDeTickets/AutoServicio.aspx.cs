@@ -19,7 +19,7 @@ namespace SistemaDeTickets
 
             lbl_user_value.Text = Session["nombre"] + " " + Session["apellido"];
 
-            dg_Tickets.DataSource =  new BindingSource( tk.ObtenerTablaPorReportado(Int32.Parse(Session["dni"].ToString())) , null)   ;
+            dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorReportado(Int32.Parse(Session["dni"].ToString())), null);
 
             dg_Tickets.DataBind();
 
@@ -27,6 +27,7 @@ namespace SistemaDeTickets
 
         protected void ddl_Clase_SelectedIndexChanged(object sender, EventArgs e)
         {
+            ddl_clasif.Items.Clear();
             ClasificacionNegocio clasif = new ClasificacionNegocio();
             clasificaciones = clasif.ObtenerClasificaciones(ddl_Clase.SelectedItem.Text, String.Empty);
 
@@ -34,7 +35,7 @@ namespace SistemaDeTickets
 
             foreach (Dominio.Clasificacion clas in clasificaciones)
             {
-                textoClasif.Add(clas.Rubro+" - " + clas.Nombre);
+                textoClasif.Add(clas.Rubro + " - " + clas.Nombre);
             }
 
 
@@ -42,7 +43,7 @@ namespace SistemaDeTickets
             ddl_clasif.DataTextField = "Nombre";
             ddl_clasif.DataValueField = "Clasificacionid";
 
-            
+
 
             lbl_clasifif.Visible = true;
 
@@ -58,11 +59,12 @@ namespace SistemaDeTickets
 
             //lbl_clasifif.Text = ddl_clasif.SelectedIndex.ToString();
             lbl_clasifif.Text = aux.Rubro;
-            
+
         }
 
         protected void btn_CrearIncidente_Click(object sender, EventArgs e)
         {
+
             TicketNegocio tkneg = new TicketNegocio();
             ClasificacionNegocio clasif = new ClasificacionNegocio();
             clasificaciones = clasif.ObtenerClasificaciones(ddl_Clase.SelectedItem.Text, String.Empty);
@@ -77,13 +79,20 @@ namespace SistemaDeTickets
             int clasificacionid = aux.Clasificacionid;
 
             var algo = Session;
-            uint creadorpor = UInt32.Parse( (string)Session["dni"] );
+            uint creadorpor = UInt32.Parse((string)Session["dni"]);
             uint reportadorpor = UInt32.Parse((string)Session["dni"]);
 
 
-
-            tkneg.CrearTicket(clase, descripcion, detalle, urgencia, clasificacionid, creadorpor, reportadorpor);
-
+            int ticketid = 0;// tkneg.CrearTicket(clase, descripcion, detalle, urgencia, clasificacionid, creadorpor, reportadorpor);
+            if (ticketid == 0)
+            {
+                Response.Redirect("AutoServicio.aspx");
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Ticket creado: " + ticketid + "\");", true);
+            }
+            else
+            {
+                lblError.Visible = true;
+            }
         }
     }
 }

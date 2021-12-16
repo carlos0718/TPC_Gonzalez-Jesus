@@ -24,7 +24,7 @@ namespace SistemaDeTickets
         {
             //if (Page.IsPostBack)
             //{
-                lbl_ClienteEmpleado.Text = ddl_ClienteEmpleado.SelectedItem.Value;
+                //lbl_ClienteEmpleado.Text = ddl_ClienteEmpleado.SelectedItem.Value;
             //}
         }
 
@@ -36,6 +36,11 @@ namespace SistemaDeTickets
 
         protected void btn_Confirmar_Click(object sender, EventArgs e)
         {
+            if (!txtb_Password.Text.Equals( txtb_PassWordConfirm.Text ))
+            {
+                LbError.Visible = true;
+                return;
+            }
             PersonaNegocio per = new PersonaNegocio();
             int return_code = 0;
 
@@ -45,10 +50,16 @@ namespace SistemaDeTickets
             div_final.Visible = true;
 
             if (return_code == 0)
-                lbl_returnInfo.Text = "Ha fallado la creacion";
+                lbl_returnInfo.Text = "Ha fallado la creacion. Intentenuevamente o contacte a un administrador.";
             else
-                lbl_returnInfo.Text = "Se registro correctamente el usuario";
+                lbl_returnInfo.Text = "Se registro correctamente el usuario.";
 
+        }
+
+
+        protected void btn_VolverInicio_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("Login.aspx");
         }
     }
 }

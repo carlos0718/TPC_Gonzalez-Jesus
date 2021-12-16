@@ -28,3 +28,9 @@ C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN-Cursos extras\TPC_Gonzalez-Jesus
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN-Cursos extras\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN-Cursos extras\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
 C:\Users\Carlos Alfredo Jesus\Desktop\TUSSI-UTN-Cursos extras\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.dll
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\bin\Debug\Dominio.pdb
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csprojAssemblyReference.cache
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.csproj.CoreCompileInputs.cache
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.dll
+C:\Users\MatiasEzequielGonzal\Desktop\PROG3\TPFINAL\TPC_Gonzalez-Jesus\TPC_Gonzalez_Jesus\Dominio\obj\Debug\Dominio.pdb
