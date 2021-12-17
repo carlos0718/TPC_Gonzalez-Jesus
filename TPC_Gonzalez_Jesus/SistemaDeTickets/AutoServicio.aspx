@@ -1,5 +1,6 @@
 ﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="AutoServicio.aspx.cs" Inherits="SistemaDeTickets.AutoServicio" %>
 
+
 <!DOCTYPE html>
 
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -12,6 +13,7 @@
             <h1 style="text-align:center; color:black; padding-top:25px; margin-top:20px; padding-left:1cm;padding-right:15px;width:100%" ><strong>AUTOSERVICIO</strong></h1>
         </div><br />
     <form id="form1" runat="server" style="padding:20px; margin-left:5cm; margin-right:5cm">
+        <asp:Label ID="lblError" runat="server" ForeColor="red"  Font-Bold="true" Visible="false" BackColor="Black" Text="El ticket no pudo ser cargado. Contacte al administrador." align="center" />
         <div style="margin-bottom:20px">
             <asp:Label runat="server" ID="lbl_user" Font-Size="17px" Font-Bold="true"  Text="Usuario: "/>
             <asp:Label runat="server" ID="lbl_user_value" />
@@ -20,8 +22,9 @@
             <asp:Label runat="server" ID="lbl_miembrosdesde" Font-Size="17px" Font-Bold="true" Text="Miembro desde: "  />
             <asp:Label runat="server" ID="lbl_miembrodesde_value"  />
         </div>
-        <div style="margin-bottom:20px">
-            <asp:Label ID="lblError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="El ticket no pudo ser cargado. Contacte al administrador." />
+        
+        <div ID="CrearTicketDiv" runat="server" style="margin-bottom:20px">
+            
             <asp:Label runat="server" ID="lbl_cargaTicket" Font-Size="17px" Font-Bold="true" Text="Tipo: "/>
             <asp:DropDownList runat="server" ID="ddl_Clase"  Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
                 AutoPostBack="true" OnSelectedIndexChanged="ddl_Clase_SelectedIndexChanged">
@@ -75,8 +78,8 @@
         Mis Tickets:
         <div style="padding-left:15%">
             <asp:DataGrid runat="server" ID="dg_Tickets"
-            PageSize="10" AllowPaging="True" DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4" 
-            ForeColor="Black" GridLines="Both" BorderColor="white">
+            PageSize="5" AllowPaging="True" DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4" 
+            ForeColor="Black" GridLines="Both" BorderColor="white" OnItemCommand="dg_Tickets_ItemCommand">
         <Columns>  
             <asp:BoundColumn HeaderText="Ticket" DataField="ticketid"/>
             <asp:BoundColumn HeaderText="Descripcion" DataField="descripcion" />
@@ -85,7 +88,7 @@
             <asp:BoundColumn HeaderText="fecha_creacion" DataField="fecha_creacion" DataFormatString="{0:dd/MM/yyyy}"/>
             <asp:BoundColumn HeaderText="fecha_fin" DataField="fecha_fin" />
             <asp:BoundColumn HeaderText="Cerrado" DataField="Historico"  />
-
+            <asp:ButtonColumn HeaderText="Registros" ButtonType="PushButton" Text="Ver" CommandName="btn_TkGrid_Reg" />
         </Columns>  
         </asp:DataGrid>
         </div>

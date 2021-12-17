@@ -18,8 +18,8 @@ namespace SistemaDeTickets
         bool es_propietario = false;
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (Page.IsPostBack)
-                return;
+            //if (Page.IsPostBack)
+              //  return;
             tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
 
             Session["ticketid"] = tk.ticketid;
@@ -64,7 +64,7 @@ namespace SistemaDeTickets
         {
             if (Int32.Parse(Session["dni"].ToString()) == _ticket.Propietario)
                 es_propietario = true;
-            
+
 
             txtb_Ticketid.Text = _ticket.ticketid.ToString();
 
@@ -107,14 +107,12 @@ namespace SistemaDeTickets
         {
             chkb_EsPropietario.Checked = es_propietario;
             chkb_EsPropietario.Enabled = false;
+            string estado = txtb_Esatdo.Text;
+            bool cerrado = estado.Equals("RESUELTO") ? true : estado.Equals("CANCELADO") ? true : false;
 
-            if (es_propietario)
+            if (es_propietario && !cerrado  )
             {
                 div_CargaRegistros.Visible = true;
-
-                txtb_Descripcion.Enabled = true;
-                txtb_Detalle.Enabled = true;
-
 
                 btn_TomarPropiedad.Visible = false;
                 btn_Guardar.Visible = true;
@@ -125,18 +123,16 @@ namespace SistemaDeTickets
             else
             {
                 div_CargaRegistros.Visible = false;
-
-                btn_TomarPropiedad.Visible = true;
-                txtb_Descripcion.Enabled = false;
-                txtb_Detalle.Enabled = false;
-
-
-
+                
                 btn_Guardar.Visible = false;
                 btn_Cancelar.Visible = false;
                 btn_Resolver.Visible = false;
                 btn_Derivar.Visible = false;
+
+                if (cerrado)
+                    btn_TomarPropiedad.Visible = false;
             }
+
         }
 
         protected void btn_Guardar_Click(object sender, EventArgs e)
@@ -189,6 +185,19 @@ namespace SistemaDeTickets
 
             
             Response.Redirect(Request.RawUrl);
+        }
+
+        protected void BtnAgregarRegistro_Click(object sender, EventArgs e)
+        {
+            tk = negocio.ObtenerTicket(Int32.Parse(Session["ticketid"].ToString()));
+            int dni = Int32.Parse(Session["dni"].ToString());
+
+            RegistroNegocio reg_neg = new RegistroNegocio();
+            if (reg_neg.InsertarRegistro(txtb_Reg_Descripcion.Text, txtb_Reg_Detalle.Text, tk.clase, tk.ticketid , dni) != 0)
+            {
+                ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Registro cargado.!\");", true);
+            }
+            Response.Redirect("Default.aspx?ticketid="+tk.ticketid);
         }
     }
 }

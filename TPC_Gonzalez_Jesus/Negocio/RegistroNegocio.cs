@@ -47,10 +47,16 @@ namespace Negocio
 
 
         }
-        public void InsertarRegistro(Ticket tk,string descripcion,string detalle)
+        public int InsertarRegistro(string _descripcion,string _detalle, string _clase,uint _ticketid , int _creadopor_dni)
         {
-            //string sentencia = String.Format("insert into registro '")
-            //    ('INCIDENTE', 37189215, 'Contacto telefonico', 'Se contacta al cliente para corroborar el prolema', 7)
+            string sentencia = String.Format("insert into registro(descripcion, detalle, clase, ticketid, creadopor) values ('{0}' , '{1}' , '{2}' , {3}, {4} )",  _descripcion, _detalle, _clase, _ticketid, _creadopor_dni);
+            
+            //System.Diagnostics.Debug.WriteLine("RegistroNegocio|Insertarregistro: " + sentencia);
+            
+            int filas_afectadas = conn.InsertUpdateDel(sentencia);
+            
+            return filas_afectadas; //Si devuelve 0, indica error. Caso contrario devolverá el numero de ticket creado
+            
         }
     }
 }

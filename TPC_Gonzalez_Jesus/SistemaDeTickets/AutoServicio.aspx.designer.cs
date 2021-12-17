@@ -24,6 +24,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.HtmlControls.HtmlForm form1;
 
         /// <summary>
+        /// Control lblError.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// Control lbl_user.
         /// </summary>
         /// <remarks>
@@ -60,13 +69,13 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label lbl_miembrodesde_value;
 
         /// <summary>
-        /// Control lblError.
+        /// Control CrearTicketDiv.
         /// </summary>
         /// <remarks>
         /// Campo generado automáticamente.
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl CrearTicketDiv;
 
         /// <summary>
         /// Control lbl_cargaTicket.

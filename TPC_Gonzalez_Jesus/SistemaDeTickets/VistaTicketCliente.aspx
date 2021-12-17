@@ -1,27 +1,31 @@
-﻿<%@ Page Title="Home Page" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="Default.aspx.cs" Inherits="SistemaDeTickets._Default" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" enableEventValidation="false" CodeBehind="VistaTicketCliente.aspx.cs" Inherits="SistemaDeTickets.VistaTicketCliente" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
+<!DOCTYPE html>
 
-    <form id="form" runat="server">
-        <div class="">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
+    <link href = "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"  rel = "stylesheet" >
+    <link rel="stylesheet" href="Style.css"/>
+</head>
+<body>
+   <form id="form" runat="server">
+  
+             <div class="">
             <nav class="navbar navbar-light bg-light" style="margin: 10px; width: 100%; height: 2.5cm">
                 <a class="navbar-brand" style="text-align: center"><b>TICKET IT </b></a>
-                <%--<ID="txtb_Buscar" input style="width:300px ; " class="form-control mr-sm-2" type="search" placeholder="Numero de ticket" aria-label="Search">--%>
-                <asp:TextBox runat="server" ID="txtb_Buscar" Width="300px" CssClass="form-control mr-sm-2" placeholder="Numero de ticket" />
-                <%--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
-                <asp:Button runat="server" ID="btn_Buscar" CssClass="btn btn-outline-success ny-2 my-sm-0" Text="Buscar" OnClick="btn_Buscar_Click" />
+                
 
             </nav>
         </div>
         <br />
         <div class="buttons">
-            <asp:Label Class="tkt" ID="lbl_EsPropietario" runat="server" Text="Soy propietario? :"></asp:Label>
-            <asp:CheckBox ID="chkb_EsPropietario" runat="server" Enabled="true" />
-            <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Guardar" runat="server" Text="Grabar Datos" OnClick="btn_Guardar_Click" />
+
             <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Resolver" runat="server" Text="Resolver" OnClick="btn_Resolver_Click" />
             <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Cancelar" runat="server" Text="Cancelar" OnClick="btn_Cancelar_Click" />
-            <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_TomarPropiedad" runat="server" Text="Tomar prop." OnClick="btn_TomarPropiedad_Click" />
-            <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Derivar" runat="server" Text="Derivar" />
         </div>
         <br />
         <section style="padding-right: 50px;">
@@ -77,9 +81,7 @@
 
             </section>
         </div>
-        <br />
-        <a href="Dashboard.aspx" class="btn btn-info" font-size="12px" style="text-decoration: none; color: black">Volver al Dashborad </a>
-        <br />
+     
         <hr />
         <br />
 
@@ -118,10 +120,6 @@
             </asp:DataGrid>
         </div>
 
-
     </form>
-    <br />
-    <br />
-    <%-- <asp:DropDownList ID="TIpoTicket" runat="server" OnSelectedIndexChanged="DropDownList1_SelectedIndexChanged">
-    </asp:DropDownList>--%>
-</asp:Content>
+</body>
+</html>

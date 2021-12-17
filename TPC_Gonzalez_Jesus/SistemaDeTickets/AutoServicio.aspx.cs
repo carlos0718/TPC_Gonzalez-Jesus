@@ -14,6 +14,13 @@ namespace SistemaDeTickets
         List<Dominio.Clasificacion> clasificaciones;
         protected void Page_Load(object sender, EventArgs e)
         {
+            if (Page.IsPostBack)
+                return;
+
+            if (Request.QueryString["crear"] == null)
+                CrearTicketDiv.Visible = false;
+            else
+                CrearTicketDiv.Visible = true;
 
             TicketNegocio tk = new TicketNegocio();
 
@@ -83,16 +90,29 @@ namespace SistemaDeTickets
             uint reportadorpor = UInt32.Parse((string)Session["dni"]);
 
 
-            int ticketid = 0;// tkneg.CrearTicket(clase, descripcion, detalle, urgencia, clasificacionid, creadorpor, reportadorpor);
-            if (ticketid == 0)
+            int ticketid =  tkneg.CrearTicket(clase, descripcion, detalle, urgencia, clasificacionid, creadorpor, reportadorpor);
+            if (ticketid != 0)
             {
+                System.Diagnostics.Debug.WriteLine("AutoServicio|btn_CrearIncidente_Click: Creado ok");
                 Response.Redirect("AutoServicio.aspx");
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Ticket creado: " + ticketid + "\");", true);
             }
             else
             {
+                System.Diagnostics.Debug.WriteLine("AutoServicio|btn_CrearIncidente_Click: Error de creacion");
                 lblError.Visible = true;
             }
+        }
+
+        protected void dg_Tickets_ItemCommand(object source, DataGridCommandEventArgs e)
+        {
+
+            if (e.CommandName.ToString() == "btn_TkGrid_Reg")
+            {
+                System.Diagnostics.Debug.WriteLine("evento");
+                Response.Redirect("VistaTicketCliente.aspx?ticketid=" + e.Item.Cells[0].Text);  // envia el numero de ticket
+            }
+            
         }
     }
 }
