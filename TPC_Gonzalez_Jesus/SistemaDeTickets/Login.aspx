@@ -9,30 +9,28 @@
         <br />
         <div style="padding:0 45px">
 
-            <div class="form-box" id="login-box" style="">
-                <div class="card-header" style="text-align: center; color: black">
+            <div class="form-box" id="login-box">
+                <div CssClass="card-header" style="text-align: center; color: black">
                     <h5><strong>Iniciar Sesion</strong> </h5>
                 </div>
                 <div style="border-color:black" class="card-body" >
                     <div class="form-group">
-                        <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control" placeholder="Ingrese usuario..."></asp:TextBox>
-                        <asp:Label ID="LbError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="Usuario inexistente o contraseña incorrecta" />
+                        <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control"  placeholder="Ingrese usuario..."></asp:TextBox>
                     </div>
                     <div class="form-group">
-                        <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" placeholder="Ingrese password..."></asp:TextBox>
+                        <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" ValidateRequestMode="Enabled" placeholder="Ingrese password..."></asp:TextBox>
                     </div>
                     <div style="text-align: center; margin-bottom: 10px">
                         <asp:Button ID="BtnAceptar" class="btn btn-primary" runat="server" Text="Aceptar" OnClick="BtnAceptar_Click" />
-                        <%--<button id="BtnAceptar" class="btn btn-primary" onclick="BtnAceptar_Click"><strong>Aceptar</strong></button>--%>
+
                     </div>
                     <div class="card-header" style="text-align: center; font-size: 11px; color: black"><strong>Si no tenés usuario, registrate</strong> </div>
                     <div style="text-align: center; margin-top: 10px">
                         <asp:Button ID="btxRegistrar" class="btn btn-primary" runat="server" Text="Registrar" OnClick="btxRegistrar_Click" />
-                        <%--<button style="font-size: 13px" id="btxRegistrar" class="btn btn-primary" onclick="btxRegistrar_Click"><strong>Registrar</strong></button>--%>
                     </div>
                 </div>
             </div>
-
+            <asp:Label ID="LbError" runat="server"  Visible="false" CssClass="alert alert-danger w-25 ml-25" role="alert" Text="Usuario inexistente o contraseña incorrecta" />
         </div>
 
     </form>
