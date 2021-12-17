@@ -6,6 +6,7 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <link rel="stylesheet" runat="server" media="screen" href="StyleSecondary.css" />
 </head>
 <body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:center;">
     <form id="form1" runat="server">
@@ -30,21 +31,29 @@
                 
                 <div>
                     <asp:TextBox runat="server" ID="txtb_DNI" TextMode="Number" Width="7cm" Font-Size="15px"  Font-Italic="true"
-                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese DNI..." /><br />
+                        BorderWidth="7px" BorderColor="white" placeholder="Ingrese DNI..." />
+                    <asp:RequiredFieldValidator ID="txtb_DNI_Validator" runat="server" ControlToValidate="txtb_DNI" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                 </div><br />
                 <%--<asp:Button runat="server" ID="btn_BuscarDNI" Text="Buscar" OnClick="btn_BuscarDNI_Click" />--%>
                <div>
                     <asp:TextBox runat="server" ID="txtb_Nombre"  Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" placeholder="Ingrese Nombre" />
+                   <asp:RequiredFieldValidator ID="txtb_Nombre_Validator" runat="server" ControlToValidate="txtb_Nombre" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                </div><br />
                 <div>
                     <asp:TextBox runat="server" ID="txtb_Apellido"  Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" placeholder="Ingrese Apellido" />
+                    <asp:RequiredFieldValidator ID="txtb_Apellido_Validator" runat="server" ControlToValidate="txtb_Apellido" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                 </div>
                 <br />
                 <div>
                     <asp:TextBox runat="server" ID="txtb_Date" Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" TextMode="Date" />
+                    <asp:RequiredFieldValidator ID="txtb_Date_Validator" runat="server" ControlToValidate="txtb_Date" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                 </div>
 
               <%--  <asp:DropDownList ID="ddl_Ano" runat="server"  AutoPostBack="false"   >
@@ -66,22 +75,30 @@
                 <div>
                     <asp:TextBox runat="server" ID="txtb_Password"  Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" placeholder="Ingrese contraseña" TextMode="Password"/>
+                    <asp:RequiredFieldValidator ID="txtb_Password_Validator" runat="server" ControlToValidate="txtb_Password" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                 </div><br />
                 <div>
                     <asp:TextBox runat="server" ID="txtb_PassWordConfirm"  Width="7cm" Font-Size="15px" Font-Italic="true"
                         BorderWidth="7px" BorderColor="white" placeholder="Confirme contraseña" TextMode="Password"/>
+                    <asp:RequiredFieldValidator ID="txtb_PassWordConfirm_Validator" runat="server" ControlToValidate="txtb_PassWordConfirm" ErrorMessage="*"   
+ForeColor="Red"></asp:RequiredFieldValidator>  
                 </div><br />
             <asp:Label ID="LbError" runat="server" ForeColor="red" Font-Bold="true" Visible="false" BackColor="Black" Text="Ups! Las contraseas no coinciden." />
                 <div>
                     <asp:Button runat="server" ID="btn_Confirmar" Font-Size="15px" Font-Italic="true"
                         BorderWidth="2px" BorderColor="white" Text="Enviar" OnClick="btn_Confirmar_Click" />
                 </div>
-                
+                <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
 
         </div>
-        <div id="div_final" runat="server" visible="false">
-        <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
-            <asp:Button ID="btn_VolverInicio" runat="server" Text="Volver al inicio." OnClick="btn_VolverInicio_Click"/>
+        <br />
+        <div id="div1" runat="server" visible="true" style="display:flex; justify-content:center; ">
+            
+        </div>
+        <div id="div_final" runat="server" visible="true" style="display:flex; justify-content:left; margin:0 5px 0 5px;">
+        
+            <asp:Button ID="btn_VolverInicio" CausesValidation="False" runat="server" Text="Volver al inicio." OnClick="btn_VolverInicio_Click"  class="btn btn-primary" />
 
         </div>
     </fieldset>

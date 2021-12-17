@@ -19,6 +19,12 @@ namespace SistemaDeTickets
         {
             tk = negocio.ObtenerTicket(Int32.Parse(Request.QueryString["ticketid"]));
 
+            if (tk.Historico)
+            {
+                btn_Cancelar.Visible = false;
+                btn_Resolver.Visible = false;
+            }
+
             Session["ticketid"] = tk.ticketid;
             PoblarDatosTicket(tk);
 
@@ -91,7 +97,7 @@ namespace SistemaDeTickets
 
             RegistroNegocio reg_neg = new RegistroNegocio();
             if (reg_neg.InsertarRegistro("Ticket CANCELADO por cliente.", "Ticket " + txtb_Esatdo.Text + " por cliente.", tk.clase, tk.ticketid, dni) != 0)
-            { 
+            {
                 ScriptManager.RegisterStartupScript(this, GetType(), "ServerControlScript", "alert(\"Registro cargado.!\");", true);
             }
             Response.Redirect(Request.RawUrl);
@@ -99,7 +105,7 @@ namespace SistemaDeTickets
 
         protected void BtnAgregarRegistro_Click(object sender, EventArgs e)
         {
-            
+
             tk = negocio.ObtenerTicket(Int32.Parse(Session["ticketid"].ToString()));
             int dni = Int32.Parse(Session["dni"].ToString());
 
@@ -118,6 +124,11 @@ namespace SistemaDeTickets
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket se actualizo correctamente');", true);
             else
                 ClientScript.RegisterClientScriptBlock(this.GetType(), "s", "window.alert('El ticket no se pudo actualizar');", true);
+        }
+
+        protected void btn_Regresar_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AutoServicio.aspx");
         }
     }
 }

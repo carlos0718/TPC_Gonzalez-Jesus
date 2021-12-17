@@ -12,6 +12,7 @@ go
 --PERSONAS
 --exec sp_crearUsuarioNuevo @DNI int,@nombre varchar(100),@apellido varchar(100),@fecha_nacimiento date	,@cliente bit,@password varchar(64)
 
+exec sp_crearUsuarionuevo 100,'admin','admin','2000-01-01',0,'admin'
 exec sp_crearUsuarioNuevo 37189215,'Matias','Gonzalez','1993-05-16' ,0, 'prog2021'
 exec sp_crearUsuarioNuevo 95346499,'Carlos','Jesus','1992-02-07' ,0, 'prog2021'
 exec sp_crearUsuarioNuevo 11111111,'Angel','Simon','1990-01-01' ,0, 'profesor'

@@ -164,6 +164,7 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="Style.css" />
+    <Content Include="StyleSecondary.css" />
     <Content Include="StyleSheet1.css" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="VistaTicketCliente.aspx" />

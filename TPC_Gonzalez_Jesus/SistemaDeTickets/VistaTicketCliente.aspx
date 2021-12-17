@@ -11,6 +11,10 @@
             </nav>
         </div>
         <br />
+
+            <div class="buttons" style="display:flex; justify-content:left; margin:0 5px 0 5px;">
+                <asp:Button class="btn btn-info" style="background-color:gold; color:black" Font-Size="12px"  ID="btn_Regresar" runat="server" Text="Volver" OnClick="btn_Regresar_Click" />
+            </div>
         <div class="buttons" style="display:flex; justify-content:end; width:85%">
             <div style="margin:0 5px 0 5px">
                 <asp:Button class="btn btn-info" Font-Size="12px"  ID="btn_Resolver" runat="server" Text="Resolver" OnClick="btn_Resolver_Click" />
@@ -102,7 +106,7 @@
         <!-- VER REGISTROS -->
         <div id="div_RegistrosGrid" >
             <strong>Registros de trabajo</strong>
-            <div style="width:85%; margin-left: 40%">
+            <div style="width:85%; margin-left: 35%">
                 <asp:DataGrid runat="server" ID="dg_Registros"
                     PageSize="10" AllowPaging="True" DataKeyField="registroid" AutoGenerateColumns="False" CellPadding="4"
                     ForeColor="Black" GridLines="Both" BorderColor="white">

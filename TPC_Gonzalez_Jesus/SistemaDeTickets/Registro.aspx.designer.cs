@@ -42,6 +42,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_DNI;
 
         /// <summary>
+        /// Control txtb_DNI_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_DNI_Validator;
+
+        /// <summary>
         /// Control txtb_Nombre.
         /// </summary>
         /// <remarks>
@@ -49,6 +58,15 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtb_Nombre;
+
+        /// <summary>
+        /// Control txtb_Nombre_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_Nombre_Validator;
 
         /// <summary>
         /// Control txtb_Apellido.
@@ -60,6 +78,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_Apellido;
 
         /// <summary>
+        /// Control txtb_Apellido_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_Apellido_Validator;
+
+        /// <summary>
         /// Control txtb_Date.
         /// </summary>
         /// <remarks>
@@ -67,6 +94,15 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtb_Date;
+
+        /// <summary>
+        /// Control txtb_Date_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_Date_Validator;
 
         /// <summary>
         /// Control lbl_esCliente.
@@ -96,6 +132,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_Password;
 
         /// <summary>
+        /// Control txtb_Password_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_Password_Validator;
+
+        /// <summary>
         /// Control txtb_PassWordConfirm.
         /// </summary>
         /// <remarks>
@@ -103,6 +148,15 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtb_PassWordConfirm;
+
+        /// <summary>
+        /// Control txtb_PassWordConfirm_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RequiredFieldValidator txtb_PassWordConfirm_Validator;
 
         /// <summary>
         /// Control LbError.
@@ -123,15 +177,6 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Button btn_Confirmar;
 
         /// <summary>
-        /// Control div_final.
-        /// </summary>
-        /// <remarks>
-        /// Campo generado automáticamente.
-        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
-        /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_final;
-
-        /// <summary>
         /// Control lbl_returnInfo.
         /// </summary>
         /// <remarks>
@@ -139,6 +184,24 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lbl_returnInfo;
+
+        /// <summary>
+        /// Control div1.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div1;
+
+        /// <summary>
+        /// Control div_final.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl div_final;
 
         /// <summary>
         /// Control btn_VolverInicio.
