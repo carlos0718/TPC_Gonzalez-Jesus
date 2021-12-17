@@ -1,31 +1,23 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" enableEventValidation="false" CodeBehind="VistaTicketCliente.aspx.cs" Inherits="SistemaDeTickets.VistaTicketCliente" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" enableEventValidation="false" MasterPageFile="~/Site.Master" CodeBehind="VistaTicketCliente.aspx.cs" Inherits="SistemaDeTickets.VistaTicketCliente" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-        <link href="~/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"/>
-    <link href = "https://unpkg.com/ionicons@4.5.10-0/dist/css/ionicons.min.css"  rel = "stylesheet" >
-    <link rel="stylesheet" href="Style.css"/>
-</head>
-<body>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
    <form id="form" runat="server">
   
              <div class="">
             <nav class="navbar navbar-light bg-light" style="margin: 10px; width: 100%; height: 2.5cm">
-                <a class="navbar-brand" style="text-align: center"><b>TICKET IT </b></a>
+                <a class="navbar-brand" style="display:flex; justify-content:center; font-weight:700"><b>TICKET IT </b></a>
                 
 
             </nav>
         </div>
         <br />
-        <div class="buttons">
-
-            <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Resolver" runat="server" Text="Resolver" OnClick="btn_Resolver_Click" />
-            <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Cancelar" runat="server" Text="Cancelar" OnClick="btn_Cancelar_Click" />
+        <div class="buttons" style="display:flex; justify-content:end; width:85%">
+            <div style="margin:0 5px 0 5px">
+                <asp:Button class="btn btn-info" Font-Size="12px"  ID="btn_Resolver" runat="server" Text="Resolver" OnClick="btn_Resolver_Click" />
+            </div>
+            <div>
+                <asp:Button class="btn btn-info" Font-Size="12px" ID="btn_Cancelar" runat="server" Text="Cancelar" OnClick="btn_Cancelar_Click" />
+            </div>
         </div>
         <br />
         <section style="padding-right: 50px;">
@@ -90,13 +82,15 @@
         <div id="div_CargaRegistros" runat="server" visible="false">
 
 
-            <div style="text-align: justify; margin-left: 20%">
+            <div style="text-align: justify; margin-left: 30%">
                 <section>
-                    <asp:Label ID="lbl_Reg_Descripcion" Text="Descripcion :" runat="server" />
-                    <asp:TextBox ID="txtb_Reg_Descripcion" placeholder="Ingrese una descripcion..." runat="server" Width="715px" />
+                    <asp:Label ID="lbl_Reg_Descripcion" Text="Título :" runat="server" />
+                    <asp:TextBox ID="txtb_Reg_Descripcion" placeholder="Ingrese una título..." runat="server" Width="715px" />
                     <br />
                     <asp:Label ID="lbl_Reg_Detalle" runat="server" Text="Detalle: " /><br />
-                    <asp:TextBox ID="txtb_Reg_Detalle" runat="server" Height="100px" Width="900px" />
+                    <div style="margin-left:15px">
+                        <asp:TextBox ID="txtb_Reg_Detalle" runat="server" Height="100px" Width="700px" />
+                    </div>
 
                     <asp:Button id="BtnAgregarRegistro" runat="server" Text="Registrar" OnClick="BtnAgregarRegistro_Click" />
                 </section>
@@ -106,20 +100,21 @@
         </div>
 
         <!-- VER REGISTROS -->
-        <div id="div_RegistrosGrid">
+        <div id="div_RegistrosGrid" >
             <strong>Registros de trabajo</strong>
-            <asp:DataGrid runat="server" ID="dg_Registros"
-                PageSize="10" AllowPaging="True" DataKeyField="registroid" AutoGenerateColumns="False" CellPadding="4"
-                ForeColor="Black" GridLines="Both" BorderColor="white">
-                <Columns>
-                    <asp:BoundColumn HeaderText="Descripcion" DataField="Descripcion" />
-                    <asp:BoundColumn HeaderText="Detalle" DataField="Detalle" />
-                    <asp:BoundColumn HeaderText="Fecha_creacion" DataField="Fecha_creacion" DataFormatString="{0:dd/MM/yyyy}" />
-                    <asp:BoundColumn HeaderText="Creado por" DataField="Creadopor" />
-                </Columns>
-            </asp:DataGrid>
+            <div style="width:85%; margin-left: 40%">
+                <asp:DataGrid runat="server" ID="dg_Registros"
+                    PageSize="10" AllowPaging="True" DataKeyField="registroid" AutoGenerateColumns="False" CellPadding="4"
+                    ForeColor="Black" GridLines="Both" BorderColor="white">
+                    <Columns>
+                        <asp:BoundColumn HeaderText="Descripcion" DataField="Descripcion" FooterStyle-Width="70px"/>
+                        <asp:BoundColumn HeaderText="Detalle" DataField="Detalle" />
+                        <asp:BoundColumn HeaderText="Fecha_creacion" DataField="Fecha_creacion" DataFormatString="{0:dd/MM/yyyy}" />
+                        <asp:BoundColumn HeaderText="Creado por" DataField="Creadopor" />
+                    </Columns>
+                </asp:DataGrid>
+            </div>
         </div>
 
     </form>
-</body>
-</html>
+</asp:Content>

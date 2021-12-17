@@ -40,7 +40,8 @@
                 <asp:DropDownList runat="server" ID="ddl_clasif" AutoPostBack="true" Width="7.5cm" Font-Size="15px" BorderWidth="7px" BorderColor="white" Font-Italic="true"
                     AppendDataBoundItems="true" OnSelectedIndexChanged="ddl_clasif_SelectedIndexChanged" />
                 <asp:RequiredFieldValidator ErrorMessage="Requerido" ControlToValidate="ddl_clasif"  runat="server" ForeColor="Red" />
-                <asp:Label runat="server" ID="lbl_clasifif" Text="Rubro"  Visible="false"/>
+               <asp:Label runat="server" ID="LbRubro" Font-Size="17px" Font-Bold="true" Text="Rubro :"/>
+                <asp:Label runat="server" ID="lbl_clasifif"  Text="Rubro"  Font-Size="17px" Visible="false"/>
            </div>
 
            <div style="padding-top:20px">
@@ -75,9 +76,9 @@
         </div>
         <br />
         <hr />
-        Mis Tickets:
+        <div style="font-size:17px; font-weight:700">Mis Tickets:</div>
         <div style="padding-left:15%">
-            <asp:DataGrid runat="server" ID="dg_Tickets"
+            <asp:DataGrid runat="server" ID="dg_Tickets" class="table"
             PageSize="5" AllowPaging="True" DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4" 
             ForeColor="Black" GridLines="Both" BorderColor="white" OnItemCommand="dg_Tickets_ItemCommand">
         <Columns>  
@@ -85,8 +86,8 @@
             <asp:BoundColumn HeaderText="Descripcion" DataField="descripcion" />
             <asp:BoundColumn HeaderText="Estado" DataField="Estado" />
             <asp:BoundColumn HeaderText="Urgencia" DataField="Urgencia" />
-            <asp:BoundColumn HeaderText="fecha_creacion" DataField="fecha_creacion" DataFormatString="{0:dd/MM/yyyy}"/>
-            <asp:BoundColumn HeaderText="fecha_fin" DataField="fecha_fin" />
+            <asp:BoundColumn HeaderText="fecha_creacion" DataField="Fecha_creacion" DataFormatString="{0:dd/MM/yyyy}"/>
+            <asp:BoundColumn HeaderText="fecha_fin" DataField="Fecha_fin" />
             <asp:BoundColumn HeaderText="Cerrado" DataField="Historico"  />
             <asp:ButtonColumn HeaderText="Registros" ButtonType="PushButton" Text="Ver" CommandName="btn_TkGrid_Reg" />
         </Columns>  

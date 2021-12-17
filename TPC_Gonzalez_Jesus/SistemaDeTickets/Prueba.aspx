@@ -1,22 +1,15 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="SistemaDeTickets.Prueba" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Prueba.aspx.cs" Inherits="SistemaDeTickets.Prueba" MasterPageFile="~/Site.Master" %>
 
-<!DOCTYPE html>
-
-<html xmlns="http://www.w3.org/1999/xhtml">
-<head runat="server">
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <title></title>
-</head>
-<body>
-
-
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <form id="Prueba" runat="server">
         <div>
+            <br />
             <asp:Label ID="lbl_BuscarTkt" runat="server" Text="Ingrese el ticket a buscar : " />
             <asp:TextBox ID="tb_Ticketid" runat="server" />
             </div>
         <div>
-            <asp:Button ID="btnTest" runat="server" Text="Boton de prueba" OnClick="btnTest_Click" />
+            <br /><br />
+            <asp:Button ID="btnTest" runat="server" Text="Boton de prueba" OnClick="btnTest_Click" ForeColor="White"  BackColor="#0066ff" BorderStyle="None"/>
         </div>
 
         <div>
@@ -75,5 +68,4 @@
         </asp:DropDownList>
         <asp:Label ID="lblMain" runat="server" Text="Label"></asp:Label>--%>
     </form>
-</body>
-</html>
+</asp:Content>
