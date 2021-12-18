@@ -33,6 +33,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.TextBox txtb_Buscar;
 
         /// <summary>
+        /// Control btn_Buscar_Validator.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.RangeValidator btn_Buscar_Validator;
+
+        /// <summary>
         /// Control btn_Buscar.
         /// </summary>
         /// <remarks>

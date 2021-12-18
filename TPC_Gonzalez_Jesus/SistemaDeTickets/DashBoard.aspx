@@ -10,7 +10,7 @@
                 <div class="menu">
                     
                     <a href="#" runat="server" ID="a_DashBoard" onserverclick="a_DashBoard_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-apps mr-2 lead"></i>Abiertos </a>
-                    <a href="#" runat="server" ID="a_DashBoardTodos" onserverclick="a_DashBoardTodos_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-clipboard mr-2 lead"></i>Todos mis tickets</a>
+                    <a href="#" runat="server" ID="a_DashBoardTodos" onserverclick="a_DashBoardTodos_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-clipboard mr-2 lead"></i></a>
                     <a href="#" runat="server" ID="a_DashBoardSinPropietario" onserverclick="a_DashBoardSinPropietario_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-alert mr-2 lead" ></i>Sin Asignar</a>
                     <a href="#" runat="server" ID="a_Logout" onserverclick="a_Logout_ServerClick" style="text-decoration:none; color:black" class="d-block font-weight-bold p-3"><i class = "icon ion-md-alert mr-2 lead" ></i>Logout</a>
                 </div>

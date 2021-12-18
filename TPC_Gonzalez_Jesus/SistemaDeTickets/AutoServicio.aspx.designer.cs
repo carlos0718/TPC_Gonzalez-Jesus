@@ -51,6 +51,15 @@ namespace SistemaDeTickets
         protected global::System.Web.UI.WebControls.Label lbl_user_value;
 
         /// <summary>
+        /// Control btn_LogOut.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_LogOut;
+
+        /// <summary>
         /// Control lbl_miembrosdesde.
         /// </summary>
         /// <remarks>
@@ -166,6 +175,15 @@ namespace SistemaDeTickets
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Button btn_CrearIncidente;
+
+        /// <summary>
+        /// Control btn_Hab_crear.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button btn_Hab_crear;
 
         /// <summary>
         /// Control dg_Tickets.

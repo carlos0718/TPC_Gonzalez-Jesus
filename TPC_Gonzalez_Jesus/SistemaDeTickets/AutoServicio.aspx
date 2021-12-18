@@ -11,16 +11,20 @@
 <body style="background-color:darkcyan;font-family:Courier New, Courier, monospace;text-align:justify; margin-top:15px">
      <div style="background-color:aliceblue; height:2.5cm">
             <h1 style="text-align:center; color:black; padding-top:25px; margin-top:20px; padding-left:1cm;padding-right:15px;width:100%" ><strong>AUTOSERVICIO</strong></h1>
-        </div><br />
+        </div>
+    
+    <br />
     <form id="form1" runat="server" style="padding:20px; margin-left:5cm; margin-right:5cm">
+        
         <asp:Label ID="lblError" runat="server" ForeColor="red"  Font-Bold="true" Visible="false" BackColor="Black" Text="El ticket no pudo ser cargado. Contacte al administrador." align="center" />
         <div style="margin-bottom:20px">
             <asp:Label runat="server" ID="lbl_user" Font-Size="17px" Font-Bold="true"  Text="Usuario: "/>
             <asp:Label runat="server" ID="lbl_user_value" />
+            <asp:Button runat="server" ID="btn_LogOut" CssClass="btn btn-outline-success ny-2 my-sm-0" Text="Salir" OnClick="btn_LogOut_Click" style="position:relative; float:right;" />
             <br />
             <br />
             <asp:Label runat="server" ID="lbl_miembrosdesde" Font-Size="17px" Font-Bold="true" Text="Miembro desde: "  />
-            <asp:Label runat="server" ID="lbl_miembrodesde_value"  />
+            <asp:Label runat="server" ID="lbl_miembrodesde_value"  DataFormatString="{0:dd/MM/yyyy}" />
         </div>
         
         <div ID="CrearTicketDiv" runat="server" style="margin-bottom:20px">
@@ -75,19 +79,20 @@
             <br />
         </div>
         <br />
+        <asp:Button runat="server" ID="btn_Hab_crear" Text="Nuevo ticket" OnClick="btn_Hab_crear_Click" />
         <hr />
         <div style="font-size:17px; font-weight:700">Mis Tickets:</div>
         <div style="padding-left:15%">
             <asp:DataGrid runat="server" ID="dg_Tickets" class="table"
-            PageSize="5" AllowPaging="True" DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4" 
-            ForeColor="Black" GridLines="Both" BorderColor="white" OnItemCommand="dg_Tickets_ItemCommand">
+             DataKeyField="ticketid" AutoGenerateColumns="False" CellPadding="4" 
+            ForeColor="Black" GridLines="Both" BorderColor="white" OnItemCommand="dg_Tickets_ItemCommand" style="font-weight:bold">
         <Columns>  
             <asp:BoundColumn HeaderText="Ticket" DataField="ticketid"/>
             <asp:BoundColumn HeaderText="Descripcion" DataField="descripcion" />
             <asp:BoundColumn HeaderText="Estado" DataField="Estado" />
             <asp:BoundColumn HeaderText="Urgencia" DataField="Urgencia" />
             <asp:BoundColumn HeaderText="fecha_creacion" DataField="Fecha_creacion" DataFormatString="{0:dd/MM/yyyy}"/>
-            <asp:BoundColumn HeaderText="fecha_fin" DataField="Fecha_fin" />
+            <%--<asp:BoundColumn HeaderText="fecha_fin" DataField="Fecha_fin" />--%>
             <asp:BoundColumn HeaderText="Cerrado" DataField="Historico"  />
             <asp:ButtonColumn HeaderText="Registros" ButtonType="PushButton" Text="Ver" CommandName="btn_TkGrid_Reg" />
         </Columns>  

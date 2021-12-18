@@ -89,9 +89,10 @@ ForeColor="Red"></asp:RequiredFieldValidator>
                     <asp:Button runat="server" ID="btn_Confirmar" Font-Size="15px" Font-Italic="true"
                         BorderWidth="2px" BorderColor="white" Text="Enviar" OnClick="btn_Confirmar_Click" />
                 </div>
-                <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
 
         </div>
+        
+                <asp:Label runat="server" ID="lbl_returnInfo" ForeColor="Red" />
         <br />
         <div id="div1" runat="server" visible="true" style="display:flex; justify-content:center; ">
             

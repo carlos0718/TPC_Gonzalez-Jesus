@@ -50,7 +50,7 @@ namespace SistemaDeTickets
             div_final.Visible = true;
 
             if (return_code == 0)
-                lbl_returnInfo.Text = "Ha fallado la creacion. Intentenuevamente o contacte a un administrador.";
+                lbl_returnInfo.Text = "El usuario ya existe. Si esto no es asi, contacte a un administrador.";
             else
                 lbl_returnInfo.Text = "Se registro correctamente el usuario.";
 

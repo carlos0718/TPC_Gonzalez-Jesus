@@ -7,9 +7,12 @@
             <nav class="navbar navbar-light bg-light" style="margin: 10px; width: 100%; height: 2.5cm">
                 <a class="navbar-brand" style="text-align: center"><b>TICKET IT </b></a>
                 <%--<ID="txtb_Buscar" input style="width:300px ; " class="form-control mr-sm-2" type="search" placeholder="Numero de ticket" aria-label="Search">--%>
-                <asp:TextBox runat="server" ID="txtb_Buscar" Width="300px" CssClass="form-control mr-sm-2" placeholder="Numero de ticket" />
+                <asp:TextBox runat="server" ID="txtb_Buscar" Width="300px" CssClass="form-control mr-sm-2" type="number" placeholder="Numero de ticket" />
+                <asp:rangevalidator ID="btn_Buscar_Validator" errormessage="Numero de ticket invalido" forecolor="Red" controltovalidate="txtb_Buscar" minimumvalue="1" maximumvalue="99999999" runat="server" Type="Integer" >
+            </asp:rangevalidator>
                 <%--<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>--%>
                 <asp:Button runat="server" ID="btn_Buscar" CssClass="btn btn-outline-success ny-2 my-sm-0" Text="Buscar" OnClick="btn_Buscar_Click" />
+                
 
             </nav>
         </div>

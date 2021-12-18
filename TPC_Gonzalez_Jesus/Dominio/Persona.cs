@@ -14,6 +14,8 @@ namespace Dominio
         public DateTime Fecha_nacimiento { get; set; }
         public DateTime Fecha_alta { get; set; }
         public bool Cliente { get; set; }
+        public bool Alta { get; set; }
+        public bool Activo { get; set; }
         public string Password { set { Password = value; } }
     }
 }

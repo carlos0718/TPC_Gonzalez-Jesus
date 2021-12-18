@@ -25,7 +25,14 @@ namespace SistemaDeTickets
             TicketNegocio tk = new TicketNegocio();
 
             lbl_user_value.Text = Session["nombre"] + " " + Session["apellido"];
-
+            try
+            { 
+                lbl_miembrodesde_value.Text = Session["alta"].ToString();
+            }catch
+            {
+                lbl_miembrosdesde.Visible = false;
+                lbl_miembrodesde_value.Visible = false;
+            }
             dg_Tickets.DataSource = new BindingSource(tk.ObtenerTablaPorReportado(Int32.Parse(Session["dni"].ToString())), null);
 
             dg_Tickets.DataBind();
@@ -113,6 +120,17 @@ namespace SistemaDeTickets
                 Response.Redirect("VistaTicketCliente.aspx?ticketid=" + e.Item.Cells[0].Text);  // envia el numero de ticket
             }
             
+        }
+
+        protected void btn_Hab_crear_Click(object sender, EventArgs e)
+        {
+            Response.Redirect("AutoServicio.aspx?crear=1");
+        }
+
+        protected void btn_LogOut_Click(object sender, EventArgs e)
+        {
+            Session.Clear();
+            Response.Redirect("Login.aspx");
         }
     }
 }

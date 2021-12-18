@@ -15,8 +15,10 @@
                 </div>
                 <div style="border-color:black" class="card-body" >
                     <div class="form-group">
-                        <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control"  placeholder="Ingrese usuario..."></asp:TextBox>
+                        <asp:TextBox ID="TxtUsuer" runat="server" CssClass="form-control"  placeholder="Ingrese usuario..." type="number" ></asp:TextBox>
                     </div>
+                     <asp:rangevalidator ID="Rangevalidator1" errormessage="Ingrese un DNI valido" forecolor="Red" controltovalidate="TxtUsuer" minimumvalue="1" maximumvalue="99999999" runat="server" Type="Integer" CssClass="alert alert-danger w-25 ml-25">
+            </asp:rangevalidator>
                     <div class="form-group">
                         <asp:TextBox ID="TxtPass" runat="server" TextMode="Password" CssClass="form-control" ValidateRequestMode="Enabled" placeholder="Ingrese password..."></asp:TextBox>
                     </div>
